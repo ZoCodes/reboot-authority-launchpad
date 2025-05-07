@@ -4,7 +4,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import PackagesSection from "@/components/PackagesSection";
+import GetStartedSection from "@/components/GetStartedSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import BespokeSection from "@/components/BespokeSection";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
@@ -38,7 +40,9 @@ const Index = () => {
       <HeroSection />
       <WhyChooseSection />
       <PackagesSection />
+      <GetStartedSection />
       <FeaturesSection />
+      <WhyBrandsChooseSection />
       <BespokeSection />
       <Footer />
       

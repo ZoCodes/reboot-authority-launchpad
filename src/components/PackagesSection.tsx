@@ -3,27 +3,27 @@ const PackagesSection = () => {
   const packages = [
     {
       name: "Launch",
-      price: "£1,500/mo",
-      links: "15 Links Guaranteed",
+      price: "£2,000/mo",
+      links: "7 Links Guaranteed",
       delivery: "60-Day Delivery Window",
       description: "Perfect for small businesses looking to establish their online presence and start building authority.",
-      features: ["Technical SEO Audit", "Content Strategy", "15 Quality Backlinks", "Monthly Reporting"]
+      features: ["Technical SEO Audit", "Content Strategy", "Quality Backlinks", "Monthly Reporting"]
     },
     {
       name: "Growth",
-      price: "£3,000/mo",
-      links: "30 Links Guaranteed",
-      delivery: "45-Day Delivery Window",
+      price: "£4,500/mo",
+      links: "22 Links Guaranteed",
+      delivery: "90-Day Delivery Window",
       description: "Ideal for growing businesses ready to accelerate their digital presence and increase their market share.",
-      features: ["Technical SEO Audit", "Content Strategy & Creation", "30 Premium Backlinks", "Weekly Reporting", "Competitor Analysis"]
+      features: ["Technical SEO Audit", "Content Strategy & Creation", "Premium Backlinks", "Weekly Reporting", "Competitor Analysis"]
     },
     {
       name: "Scale",
-      price: "£5,000/mo",
-      links: "50 Links Guaranteed",
-      delivery: "30-Day Delivery Window",
+      price: "£7,000/mo",
+      links: "48 Links Guaranteed",
+      delivery: "120-Day Delivery Window",
       description: "For established businesses looking to dominate their market and achieve maximum online visibility.",
-      features: ["Comprehensive SEO Audit", "Advanced Content Strategy", "50 High-Authority Links", "Priority Delivery", "Dedicated Account Manager"]
+      features: ["Comprehensive SEO Audit", "Advanced Content Strategy", "High-Authority Links", "Priority Delivery", "Dedicated Account Manager"]
     }
   ];
 
@@ -33,14 +33,16 @@ const PackagesSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Authority Growth Package</h2>
           <p className="text-lg max-w-3xl mx-auto">
-            Select the package that best fits your business goals and budget. All packages include our core Authority Growth features.
+            Select the package that best fits your business goals and budget.
+            <br />
+            All packages include our core Authority Growth features.
           </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100 transition-all hover:shadow-xl">
-              <div className="p-8">
+            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100 transition-all hover:shadow-xl flex flex-col h-full">
+              <div className="p-8 flex-grow">
                 <h3 className="text-2xl font-bold mb-4">{pkg.name}</h3>
                 <p className="text-3xl font-bold text-reboot-pink mb-6">{pkg.price}</p>
                 <div className="mb-6 space-y-2">
@@ -72,7 +74,7 @@ const PackagesSection = () => {
                   </ul>
                 </div>
               </div>
-              <div className="px-8 pb-8">
+              <div className="px-8 pb-8 mt-auto">
                 <button 
                   onClick={() => window.openContactModal(pkg.name.toLowerCase())}
                   className="w-full py-4 bg-reboot-pink text-white rounded-md font-medium transition-all hover:bg-opacity-90"

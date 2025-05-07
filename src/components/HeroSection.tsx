@@ -10,6 +10,7 @@ const HeroSection = () => {
             </h1>
             <p className="text-lg md:text-xl mb-8 text-reboot-navy font-light max-w-lg">
               Choose the Authority Growth Programme that's right for your business. 
+              <br />
               Gain want clear SEO results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
