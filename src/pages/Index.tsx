@@ -1,12 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import WhyChooseSection from "@/components/WhyChooseSection";
+import PackagesSection from "@/components/PackagesSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import BespokeSection from "@/components/BespokeSection";
+import Footer from "@/components/Footer";
+import ContactModal from "@/components/ContactModal";
+
+declare global {
+  interface Window {
+    openContactModal: (packageName: string) => void;
+  }
+}
 
 const Index = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState("bespoke");
+
+  useEffect(() => {
+    // Add global function to open modal from any component
+    window.openContactModal = (packageName: string) => {
+      setSelectedPackage(packageName);
+      setIsContactModalOpen(true);
+    };
+
+    return () => {
+      // Clean up
+      delete window.openContactModal;
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <HeroSection />
+      <WhyChooseSection />
+      <PackagesSection />
+      <FeaturesSection />
+      <BespokeSection />
+      <Footer />
+      
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+        selectedPackage={selectedPackage}
+      />
     </div>
   );
 };
