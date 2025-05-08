@@ -7,7 +7,7 @@ const PackagesSection = () => {
       links: "7 Links Guaranteed",
       delivery: "60-Day Delivery Window",
       description: "Perfect for small businesses looking to establish their online presence and start building authority.",
-      features: ["Technical SEO Audit", "Content Strategy", "Quality Backlinks", "Monthly Reporting"]
+      features: ["Authority Audit", "Digital PR Strategy", "High-authority, earned backlinks", "Monthly Reporting"]
     },
     {
       name: "Growth",
@@ -15,7 +15,7 @@ const PackagesSection = () => {
       links: "22 Links Guaranteed",
       delivery: "90-Day Delivery Window",
       description: "Ideal for growing businesses ready to accelerate their digital presence and increase their market share.",
-      features: ["Technical SEO Audit", "Content Strategy & Creation", "Premium Backlinks", "Weekly Reporting", "Competitor Analysis"]
+      features: ["Authority Audit", "Digital PR Strategy", "High-authority, earned backlinks", "Monthly Reporting", "Weekly WIPs", "Competitor Analysis"]
     },
     {
       name: "Scale",
@@ -23,7 +23,7 @@ const PackagesSection = () => {
       links: "48 Links Guaranteed",
       delivery: "120-Day Delivery Window",
       description: "For established businesses looking to dominate their market and achieve maximum online visibility.",
-      features: ["Comprehensive SEO Audit", "Advanced Content Strategy", "High-Authority Links", "Priority Delivery", "Dedicated Account Manager"]
+      features: ["Authority Audit", "Digital PR Strategy", "High-authority, earned backlinks", "Monthly Reporting", "Weekly WIPs", "Competitor Analysis", "Dedicated Account Manager", "Priority Delivery"]
     }
   ];
 

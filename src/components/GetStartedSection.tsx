@@ -12,6 +12,10 @@ const GetStartedSection = () => {
     {
       title: "Start growing.",
       description: "Structured delivery, measurable outcomes, and the full Reboot quality you expect."
+    },
+    {
+      title: "Move onto a simple monthly rolling plan.",
+      description: "Or choose a new Programme to keep building momentum."
     }
   ];
 
@@ -22,7 +26,7 @@ const GetStartedSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">How to Get Started</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <div key={index} className="relative">
               <div className="flex flex-col items-center text-center">
