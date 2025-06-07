@@ -113,7 +113,7 @@ const PackagesSection = () => {
               <p className="text-sm text-gray-600">Spread evenly over your delivery window</p>
             </div>
           </div>
-          <p className="text-center mt-6 font-medium">No hidden fees, no long contracts. You're in control.</p>
+          <p className="text-center mt-6 font-medium">There are no hidden fees or long contracts.</p>
         </div>
       </div>
     </section>

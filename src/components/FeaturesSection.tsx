@@ -6,7 +6,7 @@ const FeaturesSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What's Included</h2>
           <p className="text-lg max-w-3xl mx-auto mb-6">
-            Every package comes with the full Reboot experience — expert-led, data-driven campaigns delivered with precision and care.
+            Every package meets the Reboot standard - expert-led, data-driven campaigns delivered with precision and care.
           </p>
         </div>
         
@@ -18,7 +18,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Initial Strategy Session</h3>
-            <p>Deep dive into your business, audience, and SEO landscape.</p>
+            <p>We deep dive into your business, audience, and SEO landscape to deliver your visibility audit.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -80,7 +80,7 @@ const FeaturesSection = () => {
               </svg>
               Global Delivery
             </h3>
-            <p>Campaigns across the USA, UK, France, Germany, Spain, and Italy — one market at a time or bespoke multi-market plans.</p>
+            <p>Campaigns across the USA, UK, France, Germany, Spain, and Italy - one market at a time or bespoke multi-market plans.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -90,7 +90,7 @@ const FeaturesSection = () => {
               </svg>
               Flexible Growth, No Long Contracts
             </h3>
-            <p>Simple, fair terms: 30 days' notice after your delivery window. No surprises, just straightforward partnership.</p>
+            <p>Simple, fair terms: Your delivery window and then the option to move to 30 days' rolling after. No surprises.</p>
           </div>
         </div>
       </div>

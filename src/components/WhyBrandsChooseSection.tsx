@@ -13,7 +13,7 @@ const WhyBrandsChooseSection = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              <p className="text-lg">Fastest route to meaningful, high-quality link equity and visibility growth.</p>
+              <p className="text-lg">We are extremely well known for setting the industry benchmark; the route to meaningful, high-quality link equity and visibility growth.</p>
             </div>
             
             <div className="flex items-start">

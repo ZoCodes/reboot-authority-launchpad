@@ -14,13 +14,13 @@ const BespokeSection = () => {
               Not every business fits standard packages. We create fully custom retainers tailored 
               to your unique goals and challenges.
               <br /><br />
-              Speak to a Strategy Lead and let's design a plan that works for you.
+              Speak our Growth Director and let's design a plan that works for you.
             </p>
             <button 
               onClick={() => window.openContactModal("bespoke")}
               className="bg-white text-reboot-navy px-8 py-4 rounded-md font-semibold text-lg transition-all hover:bg-gray-100"
             >
-              Speak to a Strategy Lead
+              Speak to a Growth Director
             </button>
           </div>
         </div>

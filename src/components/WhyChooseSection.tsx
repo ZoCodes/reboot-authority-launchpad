@@ -4,9 +4,9 @@ const WhyChooseSection = () => {
     <section id="why-choose" className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Reboot Digital PR?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why choose a visibility programme?</h2>
           <p className="text-lg leading-relaxed mb-12">
-            Because visibility isn't just about link volume — it's about quality, relevance, and impact.
+            Delivered by the UK's largest dedicated digital PR team.
             <br /><br />
             Our UK-based team includes senior digital PR experts and PhD-level data scientists who craft data-driven campaigns that deliver guaranteed high-quality backlinks from trusted domains (DR30+).
             <br /><br />

@@ -7,15 +7,15 @@ const GetStartedSection = () => {
     },
     {
       title: "Pick the right package.",
-      description: "Based on your goals, we'll recommend the delivery window and link targets that fit your business."
+      description: "Based on your goals, our Growth team will recommend the delivery window and link targets that fit your business."
     },
     {
       title: "Watch your visibility grow.",
-      description: "We deliver guaranteed backlinks within your chosen timeframe — with transparent reporting and expert support throughout."
+      description: "We deliver guaranteed backlinks within your chosen timeframe - with transparent reporting and expert support throughout."
     },
     {
       title: "Keep momentum going.",
-      description: "After delivery, switch to a simple rolling plan or pick your next package to build further visibility."
+      description: "After delivery, switch to a simple rolling plan, pick your next package or go bespoke to build further visibility."
     }
   ];
 
