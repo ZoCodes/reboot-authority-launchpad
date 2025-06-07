@@ -2,20 +2,20 @@
 const GetStartedSection = () => {
   const steps = [
     {
-      title: "Book your free Authority Audit.",
-      description: "We'll benchmark your current domain authority, backlink profile, and growth opportunities."
+      title: "Book your free Visibility Audit.",
+      description: "We'll benchmark your backlink profile, domain authority, and growth opportunities."
     },
     {
-      title: "Choose your Programme.",
-      description: "We'll recommend the best fit based on your goals and ambition."
+      title: "Pick the right package.",
+      description: "Based on your goals, we'll recommend the delivery window and link targets that fit your business."
     },
     {
-      title: "Start growing.",
-      description: "Structured delivery, measurable outcomes, and the full Reboot quality you expect."
+      title: "Watch your visibility grow.",
+      description: "We deliver guaranteed backlinks within your chosen timeframe — with transparent reporting and expert support throughout."
     },
     {
-      title: "Move onto a simple monthly rolling plan.",
-      description: "Or choose a new Programme to keep building momentum."
+      title: "Keep momentum going.",
+      description: "After delivery, switch to a simple rolling plan or pick your next package to build further visibility."
     }
   ];
 
@@ -23,7 +23,7 @@ const GetStartedSection = () => {
     <section id="get-started" className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">How to Get Started</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
         </div>
 
         <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">

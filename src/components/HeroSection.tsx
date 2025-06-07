@@ -6,23 +6,26 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Structured Growth,<br /> Built to Perform.
+              Strategic link building,<br /> built around your business goals
             </h1>
+            <p className="text-lg md:text-xl mb-4 text-reboot-navy font-light max-w-lg">
+              delivered by the UK's largest dedicated digital PR team, backed by data science.
+            </p>
             <p className="text-lg md:text-xl mb-8 text-reboot-navy font-light max-w-lg">
-              Choose the Authority Growth Programme that's right for your business.
+              We don't do quick wins or cheap shortcuts. We build real, sustainable search visibility with high-quality backlinks that move the needle for your brand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 className="btn-primary"
                 onClick={() => window.openContactModal("bespoke")}
               >
-                Book Your Free Authority Audit
+                Book Your Free Visibility Audit
               </button>
               <button 
                 className="btn-secondary"
                 onClick={() => window.openContactModal("bespoke")}
               >
-                Talk to a Strategy Lead
+                Contact Our Team
               </button>
             </div>
           </div>

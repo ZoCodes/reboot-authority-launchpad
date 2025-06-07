@@ -11,9 +11,10 @@ const BespokeSection = () => {
           <div className="relative z-10 text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Looking for Something Bespoke?</h2>
             <p className="text-lg mb-8">
-              Not all businesses fit into standard packages. Our flexible bespoke retainers are tailored 
-              to your specific needs, challenges, and goals. We'll work closely with you to create 
-              a custom Authority Growth strategy that delivers the results you need.
+              Not every business fits standard packages. We create fully custom retainers tailored 
+              to your unique goals and challenges.
+              <br /><br />
+              Speak to a Strategy Lead and let's design a plan that works for you.
             </p>
             <button 
               onClick={() => window.openContactModal("bespoke")}

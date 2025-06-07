@@ -6,10 +6,7 @@ const FeaturesSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What's Included</h2>
           <p className="text-lg max-w-3xl mx-auto mb-6">
-            Every Authority Growth Programme includes these core components to ensure your success.
-          </p>
-          <p className="text-md max-w-3xl mx-auto">
-            Whichever Programme you choose, you'll always receive the Reboot standard: methodical delivery, best-practice SEO integration, transparent reporting, and a human team who genuinely cares about your results.
+            Every package comes with the full Reboot experience — expert-led, data-driven campaigns delivered with precision and care.
           </p>
         </div>
         
@@ -21,7 +18,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Initial Strategy Session</h3>
-            <p>A deep dive into your business goals, target audience, and current online presence to create a tailored growth plan.</p>
+            <p>Deep dive into your business, audience, and SEO landscape.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -31,7 +28,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Guaranteed Link KPIs</h3>
-            <p>Clear metrics and guaranteed number of quality backlinks to boost your site's authority and search rankings.</p>
+            <p>Clear, measurable targets for high-quality backlinks.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -41,7 +38,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Performance Dashboard</h3>
-            <p>Real-time access to your campaign's performance with key metrics and progress tracking.</p>
+            <p>Real-time campaign metrics and progress updates.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -51,7 +48,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Optional Boosters</h3>
-            <p>Add-on services like content creation, conversion rate optimization, and technical SEO fixes to enhance your results.</p>
+            <p>Content creation, CRO, technical SEO fixes, and more.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -61,7 +58,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Regular Strategy Reviews</h3>
-            <p>Monthly check-ins to analyze results, adjust tactics, and ensure your campaign stays aligned with your business goals.</p>
+            <p>Monthly check-ins to refine and align tactics.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -71,7 +68,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3">Dedicated Support Team</h3>
-            <p>Access to SEO experts and account managers who are committed to your success and available to answer questions.</p>
+            <p>Your own UK-based digital PR experts and account managers.</p>
           </div>
         </div>
         
@@ -83,8 +80,7 @@ const FeaturesSection = () => {
               </svg>
               Global Delivery
             </h3>
-            <p>We deliver campaigns across the USA, UK, France, Germany, Spain, and Italy - focused on one market at a time unless you choose a bespoke retainer.</p>
-            <p className="mt-2 text-sm font-medium">USA, UK, FR, DE, ES and IT - one market at a time unless bespoke</p>
+            <p>Campaigns across the USA, UK, France, Germany, Spain, and Italy — one market at a time or bespoke multi-market plans.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -94,7 +90,7 @@ const FeaturesSection = () => {
               </svg>
               Flexible Growth, No Long Contracts
             </h3>
-            <p>All Authority Growth Programmes work on a simple 30 days' notice after your delivery window - giving you total flexibility without hidden tie-ins.</p>
+            <p>Simple, fair terms: 30 days' notice after your delivery window. No surprises, just straightforward partnership.</p>
           </div>
         </div>
       </div>
