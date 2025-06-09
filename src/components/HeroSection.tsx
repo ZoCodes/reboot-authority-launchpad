@@ -6,10 +6,10 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Link earning,<br /> built around your business goals
+              Digital PR,<br /> Built Around Your Business Goals
             </h1>
             <p className="text-lg md:text-xl mb-8 text-reboot-navy font-light max-w-lg">
-              We build real, sustainable search visibility with high-quality backlinks that move the needle for your brand.
+              Sustainable link earning that moves the needle — backed by clear timelines and SEO expertise tailored to your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 

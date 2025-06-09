@@ -6,8 +6,10 @@ import WhyChooseSection from "@/components/WhyChooseSection";
 import PackagesSection from "@/components/PackagesSection";
 import GetStartedSection from "@/components/GetStartedSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import FlexibleGrowthSection from "@/components/FlexibleGrowthSection";
 import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import BespokeSection from "@/components/BespokeSection";
+import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
 
@@ -42,8 +44,10 @@ const Index = () => {
       <PackagesSection />
       <GetStartedSection />
       <FeaturesSection />
+      <FlexibleGrowthSection />
       <WhyBrandsChooseSection />
       <BespokeSection />
+      <FinalCTASection />
       <Footer />
       
       <ContactModal 

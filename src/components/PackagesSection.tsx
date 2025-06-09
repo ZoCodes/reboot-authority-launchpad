@@ -2,11 +2,11 @@
 const PackagesSection = () => {
   const packages = [
     {
-      name: "Visibility Launch",
-      price: "£22,000",
+      name: "Launch",
+      price: "£20,000",
       period: "4-month delivery window",
       links: "30 guaranteed backlinks",
-      description: "Perfect for startups and small businesses laying the foundation for search visibility.",
+      description: "Best for startups/small businesses building foundational visibility.",
       features: [
         "Tailored PR strategy based on your audit",
         "Monthly reporting & live dashboard access", 
@@ -15,11 +15,11 @@ const PackagesSection = () => {
       ]
     },
     {
-      name: "Visibility Core",
+      name: "Core",
       price: "£45,000",
       period: "6-month delivery window", 
-      links: "55 guaranteed backlinks",
-      description: "Ideal for growing brands accelerating their market presence.",
+      links: "65 guaranteed backlinks",
+      description: "Ideal for growing brands accelerating visibility.",
       features: [
         "All Launch features plus:",
         "Weekly progress updates",
@@ -28,11 +28,11 @@ const PackagesSection = () => {
       ]
     },
     {
-      name: "Visibility Scale",
-      price: "£75,000",
-      period: "9-month delivery window",
-      links: "90 guaranteed backlinks", 
-      description: "For established brands aiming for market dominance and long-term visibility growth.",
+      name: "Scale",
+      price: "£90,000",
+      period: "10-month delivery window",
+      links: "115 guaranteed backlinks", 
+      description: "For established brands aiming for dominance.",
       features: [
         "All Core features plus:",
         "Priority campaign delivery",
@@ -64,7 +64,7 @@ const PackagesSection = () => {
                     </svg>
                     {pkg.links}
                   </p>
-                  <p className="text-sm text-gray-600 mt-1">from domains with DR30+ and steady, growing traffic</p>
+                  <p className="text-sm text-gray-600 mt-1">from DR30+ domains</p>
                 </div>
                 <p className="text-gray-600 mb-6">{pkg.description}</p>
                 <div className="mb-8">
@@ -87,10 +87,10 @@ const PackagesSection = () => {
               </div>
               <div className="px-8 pb-8 mt-auto">
                 <button 
-                  onClick={() => window.openContactModal(pkg.name.toLowerCase().replace(' ', '-'))}
+                  onClick={() => window.openContactModal(pkg.name.toLowerCase())}
                   className="w-full py-4 bg-reboot-pink text-white rounded-md font-medium transition-all hover:bg-opacity-90"
                 >
-                  Enquire About This Package
+                  Enquire About {pkg.name}
                 </button>
               </div>
             </div>
@@ -98,22 +98,35 @@ const PackagesSection = () => {
         </div>
         
         <div className="mt-16 bg-gray-50 rounded-lg p-8">
-          <h3 className="text-2xl font-bold mb-6 text-center">Flexible Payment Options</h3>
-          <p className="text-center text-lg mb-6">Choose what works for you:</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">Pay in full upfront</h4>
+          <h3 className="text-2xl font-bold mb-6 text-center text-reboot-navy">Flexible Payment Options</h3>
+          <div className="space-y-4 max-w-2xl mx-auto">
+            <div className="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <h4 className="font-semibold text-reboot-navy">Pay upfront in full</h4>
+              </div>
             </div>
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">50/50 split</h4>
-              <p className="text-sm text-gray-600">Half upfront, half on delivery completion</p>
+            <div className="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <h4 className="font-semibold text-reboot-navy">50/50 split</h4>
+                <p className="text-sm text-gray-600">Half upfront, half on delivery completion</p>
+              </div>
             </div>
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">Monthly payments</h4>
-              <p className="text-sm text-gray-600">Spread evenly over your delivery window</p>
+            <div className="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <h4 className="font-semibold text-reboot-navy">Monthly payments</h4>
+                <p className="text-sm text-gray-600">Spread evenly across delivery window</p>
+              </div>
             </div>
           </div>
-          <p className="text-center mt-6 font-medium">There are no hidden fees or long contracts.</p>
         </div>
       </div>
     </section>

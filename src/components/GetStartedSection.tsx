@@ -2,19 +2,19 @@
 const GetStartedSection = () => {
   const steps = [
     {
-      title: "Book your free Visibility Audit.",
+      title: "Book your free Visibility Audit",
       description: "We'll benchmark your backlink profile, domain authority, and growth opportunities."
     },
     {
-      title: "Pick the right package.",
+      title: "Pick the right package",
       description: "Based on your goals, our Growth team will recommend the delivery window and link targets that fit your business."
     },
     {
-      title: "Watch your visibility grow.",
-      description: "We deliver guaranteed backlinks within your chosen timeframe - with transparent reporting and expert support throughout."
+      title: "Watch your visibility grow",
+      description: "We deliver guaranteed backlinks within your chosen timeframe with transparent reporting and expert support throughout."
     },
     {
-      title: "Keep momentum going.",
+      title: "Keep momentum going",
       description: "After delivery, switch to a simple rolling plan, pick your next package or go bespoke to build further visibility."
     }
   ];
@@ -30,8 +30,8 @@ const GetStartedSection = () => {
           {steps.map((step, index) => (
             <div key={index} className="relative">
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-reboot-pink/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-2xl font-bold text-reboot-pink">{index + 1}</span>
+                <div className="w-16 h-16 bg-reboot-pink rounded-full flex items-center justify-center mb-6">
+                  <span className="text-2xl font-bold text-white">{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
