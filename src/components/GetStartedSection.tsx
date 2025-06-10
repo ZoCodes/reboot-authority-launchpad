@@ -2,44 +2,47 @@
 const GetStartedSection = () => {
   const steps = [
     {
+      number: "01",
       title: "Book your free Visibility Audit",
       description: "We'll benchmark your backlink profile, domain authority, and growth opportunities."
     },
     {
+      number: "02", 
       title: "Pick the right package",
       description: "Based on your goals, our Growth team will recommend the delivery window and link targets that fit your business."
     },
     {
-      title: "Watch your visibility grow",
+      number: "03",
+      title: "Watch your visibility grow", 
       description: "We deliver guaranteed backlinks within your chosen timeframe with transparent reporting and expert support throughout."
     },
     {
+      number: "04",
       title: "Keep momentum going",
       description: "After delivery, switch to a simple rolling plan, pick your next package or go bespoke to build further visibility."
     }
   ];
 
   return (
-    <section id="get-started" className="section-padding bg-white">
+    <section id="get-started" className="section-padding bg-light-grey">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">How It Works</h2>
+        <div className="text-center mb-20">
+          <h2 className="font-bold mb-6 text-reboot-navy">How It Works</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Simple, transparent, and results-driven
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-reboot-pink rounded-full flex items-center justify-center mb-6">
-                  <span className="text-2xl font-bold text-white">{index + 1}</span>
+            <div key={index} className="text-center">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 h-full flex flex-col">
+                <div className="w-16 h-16 bg-reboot-pink rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <span className="text-xl font-bold text-white">{step.number}</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-bold mb-4 text-reboot-navy">{step.title}</h3>
+                <p className="text-gray-600 leading-relaxed flex-grow">{step.description}</p>
               </div>
-
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[calc(100%_-_16px)] w-[calc(100%_-_32px)] h-0.5 bg-gray-100"></div>
-              )}
             </div>
           ))}
         </div>

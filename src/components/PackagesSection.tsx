@@ -25,7 +25,8 @@ const PackagesSection = () => {
         "Weekly progress updates",
         "Competitor benchmarking & market insights",
         "Data-led optimisation by PhD analysts"
-      ]
+      ],
+      popular: true
     },
     {
       name: "Scale",
@@ -44,42 +45,50 @@ const PackagesSection = () => {
   ];
 
   return (
-    <section id="packages" className="section-padding">
+    <section id="packages" className="section-padding bg-white">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Packages</h2>
+        <div className="text-center mb-20">
+          <h2 className="font-bold mb-6 text-reboot-navy">Our Packages</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Choose the package that fits your business goals and timeline
+          </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100 transition-all hover:shadow-xl flex flex-col h-full">
+            <div key={index} className={`bg-white rounded-2xl overflow-hidden shadow-sm border transition-all duration-300 hover:shadow-lg flex flex-col h-full ${pkg.popular ? 'border-reboot-pink shadow-reboot-pink/10' : 'border-gray-200'}`}>
+              {pkg.popular && (
+                <div className="bg-reboot-pink text-white text-center py-3 px-6 font-semibold">
+                  Most Popular
+                </div>
+              )}
               <div className="p-8 flex-grow">
-                <h3 className="text-2xl font-bold mb-4">{pkg.name}</h3>
-                <p className="text-3xl font-bold text-reboot-pink mb-2">{pkg.price}</p>
-                <p className="text-sm text-gray-600 mb-6">{pkg.period}</p>
-                <div className="mb-6">
-                  <p className="font-medium flex items-center">
-                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <h3 className="text-2xl font-bold mb-6 text-reboot-navy">{pkg.name}</h3>
+                <div className="mb-8">
+                  <p className="text-4xl font-bold text-reboot-navy mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-4">{pkg.period}</p>
+                  <div className="flex items-center text-reboot-pink font-semibold">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     {pkg.links}
-                  </p>
-                  <p className="text-sm text-gray-600 mt-1">from DR30+ domains</p>
+                  </div>
+                  <p className="text-sm text-gray-500 ml-7">from DR30+ domains</p>
                 </div>
-                <p className="text-gray-600 mb-6">{pkg.description}</p>
+                <p className="text-gray-600 mb-8 leading-relaxed">{pkg.description}</p>
                 <div className="mb-8">
-                  <h4 className="font-semibold text-reboot-navy mb-2">Includes:</h4>
-                  <ul className="space-y-1">
+                  <h4 className="font-semibold text-reboot-navy mb-4">What's included:</h4>
+                  <ul className="space-y-3">
                     {pkg.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
                         {!feature.startsWith("All") ? (
-                          <svg className="w-5 h-5 mr-2 text-reboot-pink mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg className="w-5 h-5 mr-3 text-reboot-pink mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
-                          <div className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0"></div>
+                          <div className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"></div>
                         )}
-                        <span className={feature.startsWith("All") ? "font-medium" : ""}>{feature}</span>
+                        <span className={`text-gray-600 ${feature.startsWith("All") ? "font-medium text-reboot-navy" : ""}`}>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -88,43 +97,38 @@ const PackagesSection = () => {
               <div className="px-8 pb-8 mt-auto">
                 <button 
                   onClick={() => window.openContactModal(pkg.name.toLowerCase())}
-                  className="w-full py-4 bg-reboot-pink text-white rounded-md font-medium transition-all hover:bg-opacity-90"
+                  className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 ${pkg.popular ? 'btn-primary' : 'bg-gray-100 text-reboot-navy hover:bg-gray-200'}`}
                 >
-                  Enquire About {pkg.name}
+                  Get Started with {pkg.name}
                 </button>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="mt-16 bg-gray-50 rounded-lg p-8">
-          <h3 className="text-2xl font-bold mb-6 text-center text-reboot-navy">Flexible Payment Options</h3>
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <div className="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <div>
-                <h4 className="font-semibold text-reboot-navy">Pay upfront in full</h4>
+        <div className="mt-20 bg-light-grey rounded-2xl p-10 max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold mb-8 text-center text-reboot-navy">Flexible Payment Options</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-reboot-pink rounded"></div>
               </div>
+              <h4 className="font-semibold text-reboot-navy mb-2">Pay upfront in full</h4>
+              <p className="text-gray-600 text-sm">Single payment, maximum savings</p>
             </div>
-            <div className="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <div>
-                <h4 className="font-semibold text-reboot-navy">50/50 split</h4>
-                <p className="text-sm text-gray-600">Half upfront, half on delivery completion</p>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-reboot-pink rounded"></div>
               </div>
+              <h4 className="font-semibold text-reboot-navy mb-2">50/50 split</h4>
+              <p className="text-gray-600 text-sm">Half upfront, half on completion</p>
             </div>
-            <div className="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <div>
-                <h4 className="font-semibold text-reboot-navy">Monthly payments</h4>
-                <p className="text-sm text-gray-600">Spread evenly across delivery window</p>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-reboot-pink rounded"></div>
               </div>
+              <h4 className="font-semibold text-reboot-navy mb-2">Monthly payments</h4>
+              <p className="text-gray-600 text-sm">Spread across delivery window</p>
             </div>
           </div>
         </div>
