@@ -6,6 +6,7 @@ import WhyChooseSection from "@/components/WhyChooseSection";
 import PackagesSection from "@/components/PackagesSection";
 import GetStartedSection from "@/components/GetStartedSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import BoltOnServicesSection from "@/components/BoltOnServicesSection";
 import FlexibleGrowthSection from "@/components/FlexibleGrowthSection";
 import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import BespokeSection from "@/components/BespokeSection";
@@ -44,6 +45,7 @@ const Index = () => {
       <PackagesSection />
       <GetStartedSection />
       <FeaturesSection />
+      <BoltOnServicesSection />
       <FlexibleGrowthSection />
       <WhyBrandsChooseSection />
       <BespokeSection />
