@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import LinkAcceleratorCallout from "@/components/LinkAcceleratorCallout";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import PackagesSection from "@/components/PackagesSection";
 import GetStartedSection from "@/components/GetStartedSection";
@@ -41,6 +42,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
+      <LinkAcceleratorCallout />
       <WhyChooseSection />
       <PackagesSection />
       <GetStartedSection />
