@@ -20,6 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				jakarta: ["Plus Jakarta Sans", "sans-serif"],
 				montserrat: ["Montserrat", "sans-serif"],
 				poppins: ["Poppins", "sans-serif"],
 			},
@@ -33,6 +34,7 @@ export default {
 					pink: "#F2196C",
 					navy: "#132E5B",
 				},
+				'light-grey': '#F7F7F7',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
