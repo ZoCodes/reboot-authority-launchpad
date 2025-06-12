@@ -131,7 +131,7 @@ const ContactModal = ({ isOpen, onClose, selectedPackage }: ContactModalProps) =
               
               <div>
                 <label htmlFor="package" className="block text-sm font-medium text-gray-700 mb-1">
-                  Package of Interest *
+                  Interest *
                 </label>
                 <select
                   id="package"
@@ -141,9 +141,11 @@ const ContactModal = ({ isOpen, onClose, selectedPackage }: ContactModalProps) =
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent"
                 >
-                  <option value="launch">Launch Package</option>
-                  <option value="growth">Growth Package</option>
-                  <option value="scale">Scale Package</option>
+                  <option value="calculator">Calculated Package</option>
+                  <option value="igaming">iGaming & Sport Package</option>
+                  <option value="travel">Travel Package</option>
+                  <option value="apparel">Apparel Package</option>
+                  <option value="finance">Finance Package</option>
                   <option value="bespoke">Bespoke Solution</option>
                 </select>
               </div>
