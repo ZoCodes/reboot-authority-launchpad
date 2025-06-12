@@ -7,17 +7,17 @@ const HeroSection = () => {
           <div className="lg:w-1/2">
             <h1 className="font-bold mb-8 leading-tight text-reboot-navy">
               Digital PR,<br /> 
-              <span className="text-reboot-pink">Built Around</span> Your Business Goals
+              <span className="text-reboot-pink">Calculated For</span> Your Business Goals
             </h1>
             <p className="text-xl mb-10 text-gray-600 font-medium max-w-xl leading-relaxed">
-              Sustainable link earning that moves the needle — backed by clear timelines and SEO expertise tailored to your business.
+              The right amount of link earning to gain authority in your field - with delivery windows, set KPIs and SEO expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <button 
                 className="btn-primary"
                 onClick={() => window.openContactModal("bespoke")}
               >
-                Book Your Free Visibility Audit
+                Book Your Free Authority Audit
               </button>
               <button 
                 className="btn-secondary"

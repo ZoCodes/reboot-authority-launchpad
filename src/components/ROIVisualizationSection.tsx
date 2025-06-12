@@ -11,10 +11,34 @@ const ROIVisualizationSection = () => {
   ];
 
   const niches = [
-    { name: 'iGaming & Sport', color: '#F2196C', investment: '£90,000', targetPosition: 'Position 1-3' },
-    { name: 'Travel', color: '#132E5B', investment: '£30,000', targetPosition: 'Position 1-5' },
-    { name: 'Apparel', color: '#8B5CF6', investment: '£60,000', targetPosition: 'Position 1-3' },
-    { name: 'Finance', color: '#10B981', investment: '£120,000', targetPosition: 'Position 1-2' }
+    { 
+      name: 'iGaming & Sport', 
+      color: '#F2196C', 
+      investment: '£90,000', 
+      targetPosition: 'Position 1-3',
+      keyword: 'football betting'
+    },
+    { 
+      name: 'Travel', 
+      color: '#132E5B', 
+      investment: '£30,000', 
+      targetPosition: 'Position 1-5',
+      keyword: 'best holiday packages UK'
+    },
+    { 
+      name: 'Apparel', 
+      color: '#8B5CF6', 
+      investment: '£60,000', 
+      targetPosition: 'Position 1-3',
+      keyword: 'top golf shoes USA'
+    },
+    { 
+      name: 'Finance', 
+      color: '#10B981', 
+      investment: '£120,000', 
+      targetPosition: 'Position 1-2',
+      keyword: 'forex broker comparison'
+    }
   ];
 
   return (
@@ -58,7 +82,7 @@ const ROIVisualizationSection = () => {
                 ></div>
                 <h4 className="font-bold text-reboot-navy">{niche.name}</h4>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 mb-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600 text-sm">Investment:</span>
                   <span className="font-semibold text-reboot-navy">{niche.investment}</span>
@@ -67,6 +91,10 @@ const ROIVisualizationSection = () => {
                   <span className="text-gray-600 text-sm">Target:</span>
                   <span className="font-semibold text-reboot-pink">{niche.targetPosition}</span>
                 </div>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <span className="text-xs text-gray-500">Example keyword:</span>
+                <div className="font-medium text-reboot-navy text-sm">"{niche.keyword}"</div>
               </div>
             </div>
           ))}

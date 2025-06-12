@@ -83,14 +83,14 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onChange={(e) => setMarket(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white"
             >
-              <option value="english">English (£650/link)</option>
-              <option value="american">American (£750/link)</option>
-              <option value="canadian">Canadian (£950/link)</option>
-              <option value="australian">Australian (£950/link)</option>
-              <option value="german">German (£1,000/link)</option>
-              <option value="french">French (£1,000/link)</option>
-              <option value="italian">Italian (£850/link)</option>
-              <option value="spanish">Spanish (£850/link)</option>
+              <option value="english">English</option>
+              <option value="american">American</option>
+              <option value="canadian">Canadian</option>
+              <option value="australian">Australian</option>
+              <option value="german">German</option>
+              <option value="french">French</option>
+              <option value="italian">Italian</option>
+              <option value="spanish">Spanish</option>
             </select>
           </div>
           

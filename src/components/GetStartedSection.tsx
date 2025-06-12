@@ -3,23 +3,23 @@ const GetStartedSection = () => {
   const steps = [
     {
       number: "01",
-      title: "Book your free Visibility Audit",
+      title: "Book your free Authority Audit",
       description: "We'll benchmark your backlink profile, domain authority, and growth opportunities."
     },
     {
       number: "02", 
-      title: "Pick the right package",
+      title: "Use our calculator to stress test your budget",
       description: "Based on your goals, our Growth team will recommend the delivery window and link targets that fit your business."
     },
     {
       number: "03",
-      title: "Watch your visibility grow", 
+      title: "Watch your backlink profile grow", 
       description: "We deliver guaranteed backlinks within your chosen timeframe with transparent reporting and expert support throughout."
     },
     {
       number: "04",
       title: "Keep momentum going",
-      description: "After delivery, switch to a simple rolling plan, pick your next package or go bespoke to build further visibility."
+      description: "After delivery, switch to a simple rolling plan, pick your next spend or go bespoke to build further authority."
     }
   ];
 

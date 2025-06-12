@@ -5,7 +5,7 @@ const FinalCTASection = () => {
       <div className="container-custom">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-reboot-navy">
-            Ready to Grow Your Visibility?
+            Ready to Grow Your Authority?
           </h2>
           <p className="text-xl text-gray-600 mb-10 leading-relaxed">
             Join hundreds of brands who trust us to deliver measurable link building results
@@ -15,7 +15,7 @@ const FinalCTASection = () => {
               className="btn-primary"
               onClick={() => window.openContactModal("bespoke")}
             >
-              Book Your Free Visibility Audit
+              Book Your Free Authority Audit
             </button>
             <button 
               className="btn-secondary"
