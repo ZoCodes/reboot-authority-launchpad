@@ -4,7 +4,7 @@ const WhyChooseSection = () => {
     <section id="why-choose" className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose a Reboot Visibility Programme?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose a Reboot Authority Programme?</h2>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
@@ -37,6 +37,13 @@ const WhyChooseSection = () => {
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">UK-Based Team You Can Trust</h3>
             <p>Largest dedicated UK digital PR team — no outsourcing. Strategists who know your market and priorities.</p>
           </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-bold mb-6 text-reboot-navy">Global Market Coverage</h3>
+          <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto">
+            Campaigns across the UK, USA, CA, AU, FR, DE, IT and ES - one market at a time or bespoke multi-market plans. Additional markets on request.
+          </p>
         </div>
       </div>
     </section>

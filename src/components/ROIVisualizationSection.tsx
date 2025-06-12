@@ -3,11 +3,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const ROIVisualizationSection = () => {
   const roiData = [
-    { month: 'Month 1', iGaming: 0, Travel: 0, Apparel: 0, Finance: 0 },
-    { month: 'Month 3', iGaming: 15, Travel: 25, Apparel: 20, Finance: 10 },
-    { month: 'Month 6', iGaming: 45, Travel: 60, Apparel: 50, Finance: 35 },
-    { month: 'Month 9', iGaming: 75, Travel: 85, Apparel: 80, Finance: 65 },
-    { month: 'Month 12', iGaming: 95, Travel: 100, Apparel: 95, Finance: 90 }
+    { month: 'Month 1', iGaming: 50, Travel: 45, Apparel: 48, Finance: 52 },
+    { month: 'Month 3', iGaming: 35, Travel: 30, Apparel: 32, Finance: 40 },
+    { month: 'Month 6', iGaming: 15, Travel: 12, Apparel: 18, Finance: 25 },
+    { month: 'Month 9', iGaming: 8, Travel: 5, Apparel: 10, Finance: 15 },
+    { month: 'Month 12', iGaming: 3, Travel: 2, Apparel: 5, Finance: 8 }
   ];
 
   const niches = [
@@ -45,22 +45,26 @@ const ROIVisualizationSection = () => {
     <section className="section-padding bg-light-grey">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="font-bold mb-6 text-reboot-navy">ROI Timeline by Niche</h2>
+          <h2 className="font-bold mb-6 text-reboot-navy">SERP Position Movement Timeline by Niche</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how different investment levels drive ranking improvements over time
+            See how different investment levels drive SERP ranking position improvements over time. The graph shows position movements based on target keywords.
           </p>
         </div>
 
         <div className="bg-white rounded-2xl p-8 mb-12">
-          <h3 className="text-xl font-bold text-reboot-navy mb-6 text-center">Ranking Progress Timeline</h3>
+          <h3 className="text-xl font-bold text-reboot-navy mb-6 text-center">SERP Position Progress Timeline</h3>
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={roiData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis label={{ value: 'Ranking Improvement %', angle: -90, position: 'insideLeft' }} />
+                <YAxis 
+                  label={{ value: 'Average SERP Position', angle: -90, position: 'insideLeft' }}
+                  domain={[1, 50]}
+                  reversed={true}
+                />
                 <Tooltip 
-                  formatter={(value, name) => [`${value}%`, name]}
+                  formatter={(value, name) => [`Position ${value}`, name]}
                   labelFormatter={(label) => `Timeline: ${label}`}
                 />
                 <Line type="monotone" dataKey="iGaming" stroke="#F2196C" strokeWidth={3} name="iGaming & Sport" />

@@ -18,8 +18,8 @@ const GetStartedSection = () => {
     },
     {
       number: "04",
-      title: "Keep momentum going",
-      description: "After delivery, switch to a simple rolling plan, pick your next spend or go bespoke to build further authority."
+      title: "Onboarding session",
+      description: "We discuss your authority audit findings and develop a tailored strategy to maximize your link building ROI and ranking potential."
     }
   ];
 

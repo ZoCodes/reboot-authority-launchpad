@@ -69,7 +69,7 @@ const Navbar = () => {
             className="btn-primary"
             onClick={() => window.openContactModal("bespoke")}
           >
-            Book Your Free Visibility Audit
+            Book Your Free Authority Audit
           </button>
         </div>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
                 toggleMobileMenu();
               }}
             >
-              Book Your Free Visibility Audit
+              Book Your Free Authority Audit
             </button>
           </div>
         </div>

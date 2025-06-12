@@ -32,8 +32,8 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-reboot-pink/10 rounded-3xl transform rotate-2"></div>
               <div className="absolute inset-0 bg-reboot-navy/5 rounded-3xl transform -rotate-2"></div>
               <img
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800&h=600"
-                alt="SEO Growth Strategy"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600"
+                alt="Link Building Analytics Dashboard showing thousands of earned backlinks and authority growth metrics"
                 className="rounded-3xl shadow-xl relative z-10 object-cover w-full"
               />
             </div>

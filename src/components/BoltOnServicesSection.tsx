@@ -8,7 +8,7 @@ const BoltOnServicesSection = () => {
             Make Your Digital PR Work Harder — Bolt-On Services
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-medium leading-relaxed">
-            Boost your link-building ROI and supercharge your visibility with powerful add-ons. 
+            Boost your link-building ROI and supercharge your authority with powerful add-ons. 
             One-off payments start from <span className="text-reboot-pink font-semibold">£5,000</span>.
           </p>
         </div>
@@ -40,7 +40,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">GEO Audit</h3>
             <p className="text-gray-600 leading-relaxed">
-              Understand your local visibility on AI-driven search and get clear guidance to boost your presence.
+              Understand your local authority on AI-driven search and get clear guidance to boost your presence.
             </p>
           </div>
           
@@ -60,7 +60,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">AiPR Package</h3>
             <p className="text-gray-600 leading-relaxed">
-              Tap into AI-powered media lists and campaigns designed specifically to boost visibility in AI-led search.
+              Tap into AI-powered media lists and campaigns designed specifically to boost authority in AI-led search.
             </p>
           </div>
           
@@ -73,6 +73,12 @@ const BoltOnServicesSection = () => {
               Ideal for local businesses ready to out-rank competitors with targeted, geo-specific content.
             </p>
           </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Speak to our Growth team about how these bolt-ons can work for you.
+          </p>
         </div>
       </div>
     </section>

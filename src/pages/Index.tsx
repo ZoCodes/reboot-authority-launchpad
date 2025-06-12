@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import LinkAcceleratorCallout from "@/components/LinkAcceleratorCallout";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import PricingCalculatorSection from "@/components/PricingCalculatorSection";
 import GetStartedSection from "@/components/GetStartedSection";
@@ -12,6 +11,7 @@ import FlexibleGrowthSection from "@/components/FlexibleGrowthSection";
 import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import ROIVisualizationSection from "@/components/ROIVisualizationSection";
 import BespokeSection from "@/components/BespokeSection";
+import LinkAcceleratorCallout from "@/components/LinkAcceleratorCallout";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
@@ -43,7 +43,6 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
-      <LinkAcceleratorCallout />
       <WhyChooseSection />
       <PricingCalculatorSection />
       <GetStartedSection />
@@ -53,6 +52,7 @@ const Index = () => {
       <WhyBrandsChooseSection />
       <ROIVisualizationSection />
       <BespokeSection />
+      <LinkAcceleratorCallout />
       <FinalCTASection />
       <Footer />
       

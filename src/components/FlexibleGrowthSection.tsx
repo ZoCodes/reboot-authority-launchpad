@@ -8,7 +8,7 @@ const FlexibleGrowthSection = () => {
             Flexible Growth & <span className="text-reboot-pink">No Long Contracts</span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            After your delivery window, move to a 30-day rolling plan. No surprises. No lock-ins.
+            After your delivery window calculate for another project or move to a 30-day rolling plan. No surprises or lock-ins.
           </p>
         </div>
       </div>
