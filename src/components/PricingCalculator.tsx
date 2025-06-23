@@ -15,6 +15,7 @@ interface CalculatorResults {
   bonusLinks?: number;
   standardCostPerLink?: number;
   discountedCostPerLink?: number;
+  discountPercentage?: number;
 }
 
 interface PricingCalculatorProps {
@@ -38,11 +39,43 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
     spanish: 850
   };
 
-  const VOLUME_DISCOUNT_THRESHOLD = 90000;
-  const VOLUME_DISCOUNT_RATE = 0.15; // 15% discount
+  const TIER_1_THRESHOLD = 90000;  // 10% discount
+  const TIER_2_THRESHOLD = 151000; // 15% discount
+  const BESPOKE_THRESHOLD = 250000;
+
+  const getVolumeDiscount = (budgetAmount: number) => {
+    if (budgetAmount >= TIER_2_THRESHOLD && budgetAmount < BESPOKE_THRESHOLD) {
+      return { rate: 0.15, percentage: 15 };
+    } else if (budgetAmount >= TIER_1_THRESHOLD && budgetAmount < TIER_2_THRESHOLD) {
+      return { rate: 0.10, percentage: 10 };
+    }
+    return { rate: 0, percentage: 0 };
+  };
+
+  const getHintMessage = (budgetAmount: number) => {
+    // Tier 1 approach hints (£85k - £89,999)
+    if (budgetAmount >= 85000 && budgetAmount < TIER_1_THRESHOLD) {
+      const amountNeeded = TIER_1_THRESHOLD - budgetAmount;
+      return `💡 Just £${amountNeeded.toLocaleString()} more to unlock 10% volume discount and get bonus links!`;
+    }
+    
+    // Tier 2 approach hints (£140k - £150k)
+    if (budgetAmount >= 140000 && budgetAmount < TIER_2_THRESHOLD) {
+      const amountNeeded = TIER_2_THRESHOLD - budgetAmount;
+      return `🚀 Add £${amountNeeded.toLocaleString()} more to your budget to unlock 15% volume discount (currently enjoying 10%)`;
+    }
+    
+    // Near Tier 2 hints (£148k - £150k) - more urgent messaging
+    if (budgetAmount >= 148000 && budgetAmount < TIER_2_THRESHOLD) {
+      const amountNeeded = TIER_2_THRESHOLD - budgetAmount;
+      return `⭐ Only £${amountNeeded.toLocaleString()} away from maximum 15% volume discount!`;
+    }
+
+    return null;
+  };
 
   const getDeliveryWindow = (budgetAmount: number) => {
-    if (budgetAmount >= 250000) return "Contact for Bespoke Solution";
+    if (budgetAmount >= BESPOKE_THRESHOLD) return "Contact for Bespoke Solution";
     if (budgetAmount >= 200000) return "24 months";
     if (budgetAmount >= 150000) return "12 months";
     if (budgetAmount >= 100000) return "10 months";
@@ -70,9 +103,10 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       }
     } else if (budgetNum >= 5000) {
       const standardCostPerLink = marketRates[market as keyof typeof marketRates];
-      const hasVolumeDiscount = budgetNum >= VOLUME_DISCOUNT_THRESHOLD && budgetNum < 250000;
+      const volumeDiscount = getVolumeDiscount(budgetNum);
+      const hasVolumeDiscount = volumeDiscount.rate > 0 && budgetNum < BESPOKE_THRESHOLD;
       const discountedCostPerLink = hasVolumeDiscount 
-        ? standardCostPerLink * (1 - VOLUME_DISCOUNT_RATE)
+        ? standardCostPerLink * (1 - volumeDiscount.rate)
         : standardCostPerLink;
       
       const linksCount = Math.floor(budgetNum / discountedCostPerLink);
@@ -80,7 +114,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       const bonusLinks = hasVolumeDiscount ? linksCount - standardLinksCount! : undefined;
       
       const deliveryWindow = getDeliveryWindow(budgetNum);
-      const hideLinksCount = budgetNum >= 250000;
+      const hideLinksCount = budgetNum >= BESPOKE_THRESHOLD;
       
       const newResults = {
         market,
@@ -93,7 +127,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         standardLinksCount,
         bonusLinks,
         standardCostPerLink: hasVolumeDiscount ? standardCostPerLink : undefined,
-        discountedCostPerLink: hasVolumeDiscount ? discountedCostPerLink : undefined
+        discountedCostPerLink: hasVolumeDiscount ? discountedCostPerLink : undefined,
+        discountPercentage: hasVolumeDiscount ? volumeDiscount.percentage : undefined
       };
       
       setResults(newResults);
@@ -105,7 +140,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
   }, [market, budget, onResultsChange]);
 
   const handleCalculate = () => {
-    if (results?.showContactSales || (results && results.budget >= 250000)) {
+    if (results?.showContactSales || (results && results.budget >= BESPOKE_THRESHOLD)) {
       window.openContactModal("bespoke");
     } else if (results) {
       window.openContactModal("calculator");
@@ -127,6 +162,9 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       default: return value;
     }
   };
+
+  const budgetNum = parseFloat(budget);
+  const hintMessage = getHintMessage(budgetNum);
 
   return (
     <div className="max-w-4xl mx-auto mb-20">
@@ -171,11 +209,20 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           </div>
         </div>
 
-        {/* Volume discount threshold messaging */}
-        {parseFloat(budget) >= 85000 && parseFloat(budget) < VOLUME_DISCOUNT_THRESHOLD && market !== "other" && (
+        {/* Enhanced tiered hint messaging */}
+        {hintMessage && market !== "other" && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
             <p className="text-yellow-800 text-center font-medium">
-              💡 Increase your budget to £{VOLUME_DISCOUNT_THRESHOLD.toLocaleString()} to unlock 15% volume discount and get more links!
+              {hintMessage}
+            </p>
+          </div>
+        )}
+
+        {/* Sweet spot messaging for those already in Tier 1 */}
+        {budgetNum >= TIER_1_THRESHOLD && budgetNum < 140000 && market !== "other" && (
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+            <p className="text-green-800 text-center font-medium">
+              ✅ You're enjoying 10% volume pricing! <span className="text-sm text-green-600">Tip: 15% discount unlocks at £{TIER_2_THRESHOLD.toLocaleString()}</span>
             </p>
           </div>
         )}
@@ -197,8 +244,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           <div className="bg-white rounded-xl p-6 mb-6">
             {results.hasVolumeDiscount && (
               <div className="flex justify-center mb-4">
-                <Badge className="bg-green-500 text-white px-4 py-2 text-sm font-semibold">
-                  🎉 15% Volume Discount Applied
+                <Badge className={`${results.discountPercentage === 15 ? 'bg-purple-500' : 'bg-green-500'} text-white px-4 py-2 text-sm font-semibold`}>
+                  🎉 {results.discountPercentage}% Volume Discount Applied
                 </Badge>
               </div>
             )}
@@ -213,7 +260,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
                   </div>
                   {results.hasVolumeDiscount && results.bonusLinks && (
                     <div className="text-xs text-green-600 font-medium mt-1">
-                      +{results.bonusLinks} bonus links from volume discount
+                      +{results.bonusLinks} bonus links from {results.discountPercentage}% discount
                     </div>
                   )}
                 </div>
@@ -233,7 +280,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
             {results.hasVolumeDiscount && !results.hideLinksCount && (
               <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
                 <div className="text-center">
-                  <h4 className="font-semibold text-green-800 mb-2">Volume Discount Breakdown</h4>
+                  <h4 className="font-semibold text-green-800 mb-2">{results.discountPercentage}% Volume Discount Breakdown</h4>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="text-gray-600">Standard rate:</div>
@@ -241,7 +288,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
                       <div className="text-gray-500">({results.standardLinksCount} links)</div>
                     </div>
                     <div>
-                      <div className="text-gray-600">Volume rate:</div>
+                      <div className="text-gray-600">Volume rate ({results.discountPercentage}% off):</div>
                       <div className="font-medium text-green-600">£{Math.round(results.discountedCostPerLink!)} per link</div>
                       <div className="text-green-600">({results.linksCount} links total)</div>
                     </div>
@@ -272,7 +319,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onClick={handleCalculate}
               className="btn-primary"
             >
-              {results.showContactSales || results.budget >= 250000 ? "Contact Sales Team" : "Get Started"}
+              {results.showContactSales || results.budget >= BESPOKE_THRESHOLD ? "Contact Sales Team" : "Get Started"}
             </button>
           </div>
         )}
