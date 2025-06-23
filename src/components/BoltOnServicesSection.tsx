@@ -1,5 +1,11 @@
 
 const BoltOnServicesSection = () => {
+  const handleContactClick = () => {
+    if (window.openContactModal) {
+      window.openContactModal('bespoke');
+    }
+  };
+
   return (
     <section className="section-padding bg-light-grey">
       <div className="container-custom">
@@ -76,9 +82,9 @@ const BoltOnServicesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Speak to our Growth team about how these bolt-ons can work for you.
-          </p>
+          <button onClick={handleContactClick} className="btn-primary">
+            Speak to our Growth team about how these bolt-ons can work for you
+          </button>
         </div>
       </div>
     </section>

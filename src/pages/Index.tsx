@@ -11,7 +11,6 @@ import FlexibleGrowthSection from "@/components/FlexibleGrowthSection";
 import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import ROIVisualizationSection from "@/components/ROIVisualizationSection";
 import BespokeSection from "@/components/BespokeSection";
-import LinkAcceleratorCallout from "@/components/LinkAcceleratorCallout";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
@@ -52,7 +51,6 @@ const Index = () => {
       <WhyBrandsChooseSection />
       <ROIVisualizationSection />
       <BespokeSection />
-      <LinkAcceleratorCallout />
       <FinalCTASection />
       <Footer />
       
