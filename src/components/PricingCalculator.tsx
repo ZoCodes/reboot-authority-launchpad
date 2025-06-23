@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
 
 interface CalculatorResults {
   market: string;
@@ -9,6 +10,11 @@ interface CalculatorResults {
   costPerLink?: number;
   showContactSales?: boolean;
   hideLinksCount?: boolean;
+  hasVolumeDiscount?: boolean;
+  standardLinksCount?: number;
+  bonusLinks?: number;
+  standardCostPerLink?: number;
+  discountedCostPerLink?: number;
 }
 
 interface PricingCalculatorProps {
@@ -31,6 +37,9 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
     italian: 850,
     spanish: 850
   };
+
+  const VOLUME_DISCOUNT_THRESHOLD = 90000;
+  const VOLUME_DISCOUNT_RATE = 0.15; // 15% discount
 
   const getDeliveryWindow = (budgetAmount: number) => {
     if (budgetAmount >= 250000) return "Contact for Bespoke Solution";
@@ -60,8 +69,16 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         onResultsChange(null);
       }
     } else if (budgetNum >= 5000) {
-      const costPerLink = marketRates[market as keyof typeof marketRates];
-      const linksCount = Math.floor(budgetNum / costPerLink);
+      const standardCostPerLink = marketRates[market as keyof typeof marketRates];
+      const hasVolumeDiscount = budgetNum >= VOLUME_DISCOUNT_THRESHOLD && budgetNum < 250000;
+      const discountedCostPerLink = hasVolumeDiscount 
+        ? standardCostPerLink * (1 - VOLUME_DISCOUNT_RATE)
+        : standardCostPerLink;
+      
+      const linksCount = Math.floor(budgetNum / discountedCostPerLink);
+      const standardLinksCount = hasVolumeDiscount ? Math.floor(budgetNum / standardCostPerLink) : undefined;
+      const bonusLinks = hasVolumeDiscount ? linksCount - standardLinksCount! : undefined;
+      
       const deliveryWindow = getDeliveryWindow(budgetNum);
       const hideLinksCount = budgetNum >= 250000;
       
@@ -70,8 +87,13 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         budget: budgetNum,
         linksCount: hideLinksCount ? undefined : linksCount,
         deliveryWindow,
-        costPerLink: hideLinksCount ? undefined : costPerLink,
-        hideLinksCount
+        costPerLink: hideLinksCount ? undefined : discountedCostPerLink,
+        hideLinksCount,
+        hasVolumeDiscount,
+        standardLinksCount,
+        bonusLinks,
+        standardCostPerLink: hasVolumeDiscount ? standardCostPerLink : undefined,
+        discountedCostPerLink: hasVolumeDiscount ? discountedCostPerLink : undefined
       };
       
       setResults(newResults);
@@ -149,6 +171,15 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           </div>
         </div>
 
+        {/* Volume discount threshold messaging */}
+        {parseFloat(budget) >= 85000 && parseFloat(budget) < VOLUME_DISCOUNT_THRESHOLD && market !== "other" && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
+            <p className="text-yellow-800 text-center font-medium">
+              💡 Increase your budget to £{VOLUME_DISCOUNT_THRESHOLD.toLocaleString()} to unlock 15% volume discount and get more links!
+            </p>
+          </div>
+        )}
+
         {results?.showContactSales && (
           <div className="bg-white rounded-xl p-6 mb-6">
             <div className="text-center">
@@ -164,12 +195,27 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
 
         {results && !results.showContactSales && (
           <div className="bg-white rounded-xl p-6 mb-6">
+            {results.hasVolumeDiscount && (
+              <div className="flex justify-center mb-4">
+                <Badge className="bg-green-500 text-white px-4 py-2 text-sm font-semibold">
+                  🎉 15% Volume Discount Applied
+                </Badge>
+              </div>
+            )}
+            
             <h3 className="text-xl font-bold text-reboot-navy mb-4">Your Package</h3>
             <div className={`grid ${results.hideLinksCount ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-6`}>
               {!results.hideLinksCount && (
                 <div className="text-center">
                   <div className="text-3xl font-bold text-reboot-pink mb-2">{results.linksCount}</div>
-                  <div className="text-sm text-gray-600">Guaranteed Links</div>
+                  <div className="text-sm text-gray-600">
+                    {results.hasVolumeDiscount ? "Total Links (with bonus)" : "Guaranteed Links"}
+                  </div>
+                  {results.hasVolumeDiscount && results.bonusLinks && (
+                    <div className="text-xs text-green-600 font-medium mt-1">
+                      +{results.bonusLinks} bonus links from volume discount
+                    </div>
+                  )}
                 </div>
               )}
               <div className="text-center">
@@ -183,6 +229,27 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
                 </div>
               </div>
             </div>
+            
+            {results.hasVolumeDiscount && !results.hideLinksCount && (
+              <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="text-center">
+                  <h4 className="font-semibold text-green-800 mb-2">Volume Discount Breakdown</h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="text-gray-600">Standard rate:</div>
+                      <div className="font-medium">£{results.standardCostPerLink} per link</div>
+                      <div className="text-gray-500">({results.standardLinksCount} links)</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-600">Volume rate:</div>
+                      <div className="font-medium text-green-600">£{Math.round(results.discountedCostPerLink!)} per link</div>
+                      <div className="text-green-600">({results.linksCount} links total)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
             {results.hideLinksCount && (
               <div className="text-center mt-4 p-4 bg-reboot-pink/10 rounded-lg">
                 <p className="text-reboot-navy font-medium">
