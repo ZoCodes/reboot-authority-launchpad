@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 interface CalculatorResults {
   market: string;
   budget: number;
-  linksCount: number;
+  linksCount?: number;
   deliveryWindow: string;
-  costPerLink: number;
+  costPerLink?: number;
+  showContactSales?: boolean;
+  hideLinksCount?: boolean;
 }
 
 interface PricingCalculatorProps {
@@ -14,11 +16,12 @@ interface PricingCalculatorProps {
 }
 
 const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
-  const [market, setMarket] = useState("english");
+  const [market, setMarket] = useState("global");
   const [budget, setBudget] = useState("");
   const [results, setResults] = useState<CalculatorResults | null>(null);
 
   const marketRates = {
+    global: 650,
     english: 650,
     american: 750,
     canadian: 950,
@@ -40,17 +43,35 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
 
   useEffect(() => {
     const budgetNum = parseFloat(budget);
-    if (budgetNum >= 5000) {
+    
+    if (market === "other") {
+      // For "Other/Multiple" market, always show contact sales message
+      if (budgetNum >= 5000) {
+        const newResults = {
+          market,
+          budget: budgetNum,
+          deliveryWindow: "Contact for Bespoke Solution",
+          showContactSales: true
+        };
+        setResults(newResults);
+        onResultsChange(newResults);
+      } else {
+        setResults(null);
+        onResultsChange(null);
+      }
+    } else if (budgetNum >= 5000) {
       const costPerLink = marketRates[market as keyof typeof marketRates];
       const linksCount = Math.floor(budgetNum / costPerLink);
       const deliveryWindow = getDeliveryWindow(budgetNum);
+      const hideLinksCount = budgetNum >= 250000;
       
       const newResults = {
         market,
         budget: budgetNum,
-        linksCount,
+        linksCount: hideLinksCount ? undefined : linksCount,
         deliveryWindow,
-        costPerLink
+        costPerLink: hideLinksCount ? undefined : costPerLink,
+        hideLinksCount
       };
       
       setResults(newResults);
@@ -62,10 +83,26 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
   }, [market, budget, onResultsChange]);
 
   const handleCalculate = () => {
-    if (results && results.budget >= 250000) {
+    if (results?.showContactSales || (results && results.budget >= 250000)) {
       window.openContactModal("bespoke");
     } else if (results) {
       window.openContactModal("calculator");
+    }
+  };
+
+  const getMarketDisplayName = (value: string) => {
+    switch (value) {
+      case "global": return "Global - No market preference";
+      case "english": return "English";
+      case "american": return "American";
+      case "canadian": return "Canadian";
+      case "australian": return "Australian";
+      case "german": return "German";
+      case "french": return "French";
+      case "italian": return "Italian";
+      case "spanish": return "Spanish";
+      case "other": return "Other/Multiple";
+      default: return value;
     }
   };
 
@@ -83,6 +120,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onChange={(e) => setMarket(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white"
             >
+              <option value="global">Global - No market preference ⭐ Recommended</option>
               <option value="english">English</option>
               <option value="american">American</option>
               <option value="canadian">Canadian</option>
@@ -91,6 +129,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               <option value="french">French</option>
               <option value="italian">Italian</option>
               <option value="spanish">Spanish</option>
+              <option value="other">Other/Multiple - Contact Sales</option>
             </select>
           </div>
           
@@ -110,23 +149,47 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           </div>
         </div>
 
-        {results && (
+        {results?.showContactSales && (
+          <div className="bg-white rounded-xl p-6 mb-6">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-reboot-navy mb-4">Bespoke Solution Required</h3>
+              <p className="text-gray-600 mb-4">
+                For multiple markets or custom requirements, our sales team will create a tailored solution for your needs.
+              </p>
+              <div className="text-3xl font-bold text-reboot-pink mb-2">£{results.budget.toLocaleString()}</div>
+              <div className="text-sm text-gray-600">Budget Available</div>
+            </div>
+          </div>
+        )}
+
+        {results && !results.showContactSales && (
           <div className="bg-white rounded-xl p-6 mb-6">
             <h3 className="text-xl font-bold text-reboot-navy mb-4">Your Package</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-reboot-pink mb-2">{results.linksCount}</div>
-                <div className="text-sm text-gray-600">Guaranteed Links</div>
-              </div>
+            <div className={`grid ${results.hideLinksCount ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-6`}>
+              {!results.hideLinksCount && (
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-reboot-pink mb-2">{results.linksCount}</div>
+                  <div className="text-sm text-gray-600">Guaranteed Links</div>
+                </div>
+              )}
               <div className="text-center">
                 <div className="text-3xl font-bold text-reboot-pink mb-2">£{results.budget.toLocaleString()}</div>
                 <div className="text-sm text-gray-600">Total Investment</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-reboot-pink mb-2">{results.deliveryWindow}</div>
-                <div className="text-sm text-gray-600">Delivery Window</div>
+                <div className="text-sm text-gray-600">
+                  {results.hideLinksCount ? "Contact Required" : "Delivery Window"}
+                </div>
               </div>
             </div>
+            {results.hideLinksCount && (
+              <div className="text-center mt-4 p-4 bg-reboot-pink/10 rounded-lg">
+                <p className="text-reboot-navy font-medium">
+                  For investments over £250,000, we'll design a bespoke solution with our sales team.
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -142,7 +205,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onClick={handleCalculate}
               className="btn-primary"
             >
-              {results.budget >= 250000 ? "Contact Sales Team" : "Get Started"}
+              {results.showContactSales || results.budget >= 250000 ? "Contact Sales Team" : "Get Started"}
             </button>
           </div>
         )}
