@@ -1,33 +1,39 @@
 
+import { Star } from 'lucide-react';
+
 const IndustryExamples = () => {
   const industries = [
     {
       name: "iGaming & Sport",
       budget: "£90,000",
-      links: "138 links",
+      links: "110 links",
       delivery: "10 months",
-      description: "High-competition verticals requiring premium placements"
+      description: "High-competition verticals requiring premium placements",
+      isSpecialized: true
     },
     {
       name: "Travel",
       budget: "£30,000",
       links: "46 links", 
       delivery: "4 months",
-      description: "Seasonal campaigns with targeted geographic focus"
+      description: "Seasonal campaigns with targeted geographic focus",
+      isSpecialized: false
     },
     {
       name: "Apparel",
       budget: "£60,000",
       links: "92 links",
       delivery: "6 months",
-      description: "Fashion and lifestyle brands building authority"
+      description: "Fashion and lifestyle brands building authority",
+      isSpecialized: false
     },
     {
       name: "Finance",
       budget: "£120,000",
-      links: "184 links",
+      links: "147 links",
       delivery: "10 months",
-      description: "Regulated sectors requiring high-authority domains"
+      description: "Regulated sectors requiring high-authority domains",
+      isSpecialized: true
     }
   ];
 
@@ -41,8 +47,29 @@ const IndustryExamples = () => {
       </p>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
         {industries.map((industry, index) => (
-          <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg">
-            <h4 className="text-lg font-bold text-reboot-navy mb-3">{industry.name}</h4>
+          <div 
+            key={index} 
+            className={`bg-white rounded-xl p-6 shadow-sm border transition-all duration-300 hover:shadow-lg ${
+              industry.isSpecialized ? 'border-orange-200 bg-gradient-to-br from-white to-orange-50' : 'border-gray-200'
+            }`}
+          >
+            <div className="flex items-center mb-3">
+              <h4 className="text-lg font-bold text-reboot-navy flex items-center gap-2">
+                {industry.name}
+                {industry.isSpecialized && (
+                  <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
+                )}
+              </h4>
+            </div>
+            
+            {industry.isSpecialized && (
+              <div className="mb-4 p-2 bg-orange-100 rounded-lg">
+                <span className="text-xs text-orange-700 font-medium">
+                  ⚠️ Specialized Sector
+                </span>
+              </div>
+            )}
+            
             <div className="space-y-2 mb-4">
               <div className="flex justify-between">
                 <span className="text-gray-600 text-sm">Investment:</span>
