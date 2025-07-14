@@ -1,5 +1,6 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Star } from 'lucide-react';
 
 const ROIVisualizationSection = () => {
   const roiData = [
@@ -14,30 +15,36 @@ const ROIVisualizationSection = () => {
     { 
       name: 'iGaming & Sport', 
       color: '#F2196C', 
-      investment: '£90,000', 
+      investment: '£108,000',
+      originalInvestment: '£90,000',
       targetPosition: 'Position 1-3',
-      keyword: 'football betting'
+      keyword: 'football betting',
+      isSpecialized: true
     },
     { 
       name: 'Travel', 
       color: '#132E5B', 
       investment: '£30,000', 
       targetPosition: 'Position 1-5',
-      keyword: 'best holiday packages UK'
+      keyword: 'best holiday packages UK',
+      isSpecialized: false
     },
     { 
       name: 'Apparel', 
       color: '#8B5CF6', 
       investment: '£60,000', 
       targetPosition: 'Position 1-3',
-      keyword: 'top golf shoes USA'
+      keyword: 'top golf shoes USA',
+      isSpecialized: false
     },
     { 
       name: 'Finance', 
       color: '#10B981', 
-      investment: '£120,000', 
+      investment: '£144,000',
+      originalInvestment: '£120,000',
       targetPosition: 'Position 1-2',
-      keyword: 'forex broker comparison'
+      keyword: 'forex broker comparison',
+      isSpecialized: true
     }
   ];
 
@@ -78,18 +85,44 @@ const ROIVisualizationSection = () => {
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
           {niches.map((niche, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div 
+              key={index} 
+              className={`bg-white rounded-xl p-6 shadow-sm border ${
+                niche.isSpecialized ? 'border-orange-200 bg-gradient-to-br from-white to-orange-50' : 'border-gray-200'
+              }`}
+            >
               <div className="flex items-center mb-4">
                 <div 
                   className="w-4 h-4 rounded-full mr-3"
                   style={{ backgroundColor: niche.color }}
                 ></div>
-                <h4 className="font-bold text-reboot-navy">{niche.name}</h4>
+                <h4 className="font-bold text-reboot-navy flex items-center gap-2">
+                  {niche.name}
+                  {niche.isSpecialized && (
+                    <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
+                  )}
+                </h4>
               </div>
+              
+              {niche.isSpecialized && (
+                <div className="mb-3 p-2 bg-orange-100 rounded-lg">
+                  <span className="text-xs text-orange-700 font-medium">
+                    ⚠️ Specialized Sector (+20% premium)
+                  </span>
+                </div>
+              )}
+              
               <div className="space-y-2 mb-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600 text-sm">Investment:</span>
-                  <span className="font-semibold text-reboot-navy">{niche.investment}</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-reboot-navy">{niche.investment}</span>
+                    {niche.isSpecialized && (
+                      <div className="text-xs text-gray-500 line-through">
+                        {niche.originalInvestment}
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 text-sm">Target:</span>
