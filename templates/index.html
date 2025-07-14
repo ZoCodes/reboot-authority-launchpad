@@ -1,0 +1,355 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="max-w-4xl text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-gray-900">
+                    Digital PR,<br> 
+                    <span class="text-pink-500">Calculated For</span> Your Business Goals
+                </h1>
+                <p class="text-xl mb-10 text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed">
+                    Digital PR that delivers authority without demanding your time - leave the strategy to us.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="openContactModal('bespoke')">
+                        Book Your Free Authority Audit
+                    </button>
+                    <button class="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300" onclick="openContactModal('bespoke')">
+                        Contact Our Team
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Calculator Section -->
+<section id="pricing" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="flex justify-center mb-6">
+                <span class="bg-pink-500 text-white px-6 py-2 text-lg font-bold rounded-full">
+                    Zero Intervention Pricing
+                </span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Calculate Your Investment</h2>
+        </div>
+
+        <!-- What to Expect -->
+        <div class="bg-gray-100 rounded-2xl p-8 mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">What to Expect from a Zero Intervention Campaign</h3>
+            <p class="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+                These campaigns are designed to deliver impact without draining your time. You leave it to us as the experts and we get to work.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <svg class="w-6 h-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">High-Authority, Global Coverage</h4>
+                            <p class="text-gray-600">Our outreach isn't limited by region, sector, or contact lists. We use the full force of our journalist network to secure results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <svg class="w-6 h-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Creative Freedom = Better Coverage</h4>
+                            <p class="text-gray-600">We'll aim to keep campaigns relevant to your niche, but we retain full flexibility to broaden the topic if that's what it takes to earn top-tier press.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <svg class="w-6 h-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Set It and Forget It</h4>
+                            <p class="text-gray-600">Once your target landing page is locked in, we get cracking. Changing domains mid-way would disrupt delivery, so we keep focus consistent.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <svg class="w-6 h-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Minimal Calls, Maximum Output</h4>
+                            <p class="text-gray-600">You'll have an onboarding call to kick things off, and a wrap-up call at the end. The rest? We handle it all.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calculator -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <!-- Calculator Header -->
+            <div class="bg-gray-900 rounded-t-2xl p-4 border-b-2 border-gray-700">
+                <div class="bg-gray-800 rounded-lg p-4 font-mono">
+                    <div class="text-green-400 text-sm mb-2">REBOOT DIGITAL PR CALCULATOR</div>
+                    <div class="text-green-300 text-lg" id="calculator-status">
+                        ENTER YOUR REQUIREMENTS...
+                    </div>
+                    <div class="text-yellow-300 text-sm mt-1" id="domain-display" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator Form -->
+            <div class="bg-gray-100 rounded-b-2xl p-8 border-2 border-t-0 border-gray-300">
+                <form id="calculator-form">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <label for="targetDomain" class="block text-sm font-semibold text-gray-900 mb-3">
+                                Target Domain
+                            </label>
+                            {{ calculator_form.target_domain }}
+                        </div>
+                        <div>
+                            <label for="market" class="block text-sm font-semibold text-gray-900 mb-3">
+                                Target Market
+                            </label>
+                            {{ calculator_form.market }}
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-semibold text-gray-900 mb-3">
+                                Budget (minimum £5,000)
+                            </label>
+                            {{ calculator_form.budget }}
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Messages -->
+                <div id="calculator-messages"></div>
+
+                <!-- Results -->
+                <div id="calculator-results"></div>
+            </div>
+        </div>
+
+        <!-- Qualification Messaging -->
+        <div class="bg-pink-50 rounded-2xl p-6 mb-12 text-center border border-pink-200">
+            <p class="text-gray-700 mb-4">
+                <strong>Perfect for businesses wanting to leave digital PR strategy & delivery to the experts.</strong>
+            </p>
+            <p class="text-sm text-gray-600">
+                Need hands-on strategy input or collaborative campaign development? 
+                <button onclick="openContactModal('bespoke')" class="text-pink-500 hover:underline font-medium ml-1">
+                    Our bespoke team handles fully collaborative campaigns.
+                </button>
+            </p>
+        </div>
+
+        <!-- Industry Examples -->
+        <div class="mb-20">
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-6">
+                Suggestions by Niche
+            </h3>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Our data knows what will move the needle in your niche
+            </p>
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-orange-200 bg-gradient-to-br from-white to-orange-50">
+                    <div class="flex items-center mb-3">
+                        <h4 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                            iGaming & Sport
+                            <svg class="w-4 h-4 text-orange-500 fill-orange-500" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </h4>
+                    </div>
+                    <div class="mb-4 p-2 bg-orange-100 rounded-lg">
+                        <span class="text-xs text-orange-700 font-medium">
+                            ⚠️ Specialized Sector
+                        </span>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Investment:</span>
+                            <span class="font-semibold text-pink-500">£90,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Links:</span>
+                            <span class="font-semibold text-gray-900">110 links</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Delivery:</span>
+                            <span class="font-semibold text-gray-900">10 months</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">High-competition verticals requiring premium placements</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-3">
+                        <h4 class="text-lg font-bold text-gray-900">Travel</h4>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Investment:</span>
+                            <span class="font-semibold text-pink-500">£30,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Links:</span>
+                            <span class="font-semibold text-gray-900">46 links</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Delivery:</span>
+                            <span class="font-semibold text-gray-900">4 months</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">Seasonal campaigns with targeted geographic focus</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-3">
+                        <h4 class="text-lg font-bold text-gray-900">Apparel</h4>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Investment:</span>
+                            <span class="font-semibold text-pink-500">£60,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Links:</span>
+                            <span class="font-semibold text-gray-900">92 links</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Delivery:</span>
+                            <span class="font-semibold text-gray-900">6 months</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">Fashion and lifestyle brands building authority</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-orange-200 bg-gradient-to-br from-white to-orange-50">
+                    <div class="flex items-center mb-3">
+                        <h4 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                            Finance
+                            <svg class="w-4 h-4 text-orange-500 fill-orange-500" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </h4>
+                    </div>
+                    <div class="mb-4 p-2 bg-orange-100 rounded-lg">
+                        <span class="text-xs text-orange-700 font-medium">
+                            ⚠️ Specialized Sector
+                        </span>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Investment:</span>
+                            <span class="font-semibold text-pink-500">£120,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Links:</span>
+                            <span class="font-semibold text-gray-900">147 links</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 text-sm">Delivery:</span>
+                            <span class="font-semibold text-gray-900">10 months</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">Regulated sectors requiring high-authority domains</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERP Position Movement Timeline -->
+<section class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">SERP Position Movement Timeline by Niche</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                See how different investment levels drive SERP ranking position improvements over time. The graph shows position movements based on target keywords.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 mb-12">
+            <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">SERP Position Progress Timeline</h3>
+            <div class="h-80 w-full bg-gray-50 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">Chart would be implemented using Chart.js or similar library</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Flexible Growth Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
+                Flexible Growth & <span class="text-pink-500">No Long Contracts</span>
+            </h2>
+            <p class="text-xl text-gray-600 leading-relaxed">
+                After your delivery window calculate for another project or move to a 30-day rolling plan. No surprises or lock-ins.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Bespoke Section -->
+<section id="bespoke" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center bg-gray-100 rounded-2xl p-12 max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                Looking for Something <span class="text-pink-500">Bespoke?</span>
+            </h2>
+            <p class="text-xl mb-8 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Not every business fits standard packages. We create fully custom retainers tailored 
+                to your unique goals and challenges.
+            </p>
+            <button onclick="openContactModal('bespoke')" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Speak to a Growth Director
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
+                Ready to Grow Your Authority?
+            </h2>
+            <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+                Join hundreds of brands who trust us to deliver measurable link building results
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="openContactModal('bespoke')">
+                    Book Your Free Authority Audit
+                </button>
+                <button class="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300" onclick="openContactModal('bespoke')">
+                    Contact Our Team
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize calculator when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initCalculator();
+    });
+</script>
+{% endblock %}

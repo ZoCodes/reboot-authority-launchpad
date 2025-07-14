@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you for your inquiry - Reboot Digital</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%); color: white; padding: 30px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .content { background: white; padding: 30px; border: 1px solid #ddd; border-radius: 8px; }
+        .highlight { background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #3b82f6; }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thank You, {{ inquiry.name }}!</h1>
+            <p>We've received your inquiry and will be in touch within 24 hours.</p>
+        </div>
+        
+        <div class="content">
+            <h2>What happens next?</h2>
+            
+            <div class="highlight">
+                <h3>1. Expert Review (Within 24 hours)</h3>
+                <p>Our team will review your requirements and prepare a tailored response.</p>
+            </div>
+            
+            <div class="highlight">
+                <h3>2. Personalized Consultation</h3>
+                <p>We'll schedule a call to discuss your specific needs and objectives.</p>
+            </div>
+            
+            <div class="highlight">
+                <h3>3. Custom Strategy</h3>
+                <p>Receive a detailed proposal designed specifically for your business goals.</p>
+            </div>
+            
+            <p><strong>Your inquiry details:</strong></p>
+            <ul>
+                <li>Package Type: {{ inquiry.get_package_type_display }}</li>
+                {% if inquiry.budget %}<li>Budget: £{{ inquiry.budget|floatformat:0 }}</li>{% endif %}
+                {% if inquiry.target_domain %}<li>Target Domain: {{ inquiry.target_domain }}</li>{% endif %}
+                {% if inquiry.market %}<li>Market: {{ inquiry.market }}</li>{% endif %}
+            </ul>
+            
+            <p>If you have any urgent questions, please don't hesitate to contact us directly.</p>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>Reboot Digital</strong><br>
+                Email: hello@rebootdigital.co.uk<br>
+                Phone: +44 (0) 20 1234 5678
+            </p>
+        </div>
+    </div>
+</body>
+</html>

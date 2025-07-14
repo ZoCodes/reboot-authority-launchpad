@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ meta_title|default:"Reboot Digital - Digital PR Calculator" }}{% endblock %}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}{{ meta_description|default:"Calculate your digital PR investment with our transparent pricing calculator. Get instant quotes for high-authority link building campaigns." }}{% endblock %}">
+    <meta name="keywords" content="digital PR, link building, SEO, PR calculator, content marketing, authority building">
+    <meta name="author" content="Reboot Digital">
+    <link rel="canonical" href="{% block canonical %}{{ canonical_url }}{% endblock %}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}{{ meta_title|default:"Reboot Digital - Digital PR Calculator" }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ meta_description }}{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:site_name" content="Reboot Digital">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ meta_title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ meta_description }}{% endblock %}">
+    
+    <!-- Structured Data -->
+    {% if structured_data %}
+    <script type="application/ld+json">
+        {{ structured_data|safe }}
+    </script>
+    {% endif %}
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="{% load static %}{% static 'css/main.min.css' %}" as="style">
+    <link rel="preload" href="{% load static %}{% static 'js/main.min.js' %}" as="script">
+    
+    <!-- Styles -->
+    {% load compress %}
+    {% compress css %}
+    <link rel="stylesheet" href="{% load static %}{% static 'css/main.css' %}">
+    {% endcompress %}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% load static %}{% static 'favicon.ico' %}">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="h-full bg-white">
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-600 text-white p-2 z-50">
+        Skip to content
+    </a>
+    
+    <div id="main-content" class="min-h-full">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <!-- Scripts -->
+    {% compress js %}
+    <script src="{% load static %}{% static 'js/calculator.js' %}"></script>
+    <script src="{% load static %}{% static 'js/main.js' %}"></script>
+    {% endcompress %}
+    
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-md w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">Contact Us</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <form id="contact-form" method="post" action="{% url 'calculator:contact_submit' %}">
+                    {% csrf_token %}
+                    {{ contact_form.as_p }}
+                    <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-600 hover:to-pink-500 transition-all duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% block extra_js %}
+    {% endblock %}
+</body>
+</html>
