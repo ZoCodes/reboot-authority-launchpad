@@ -10,14 +10,14 @@ const HeroSection = () => {
               <span className="text-reboot-pink">Calculated For</span> Your Business Goals
             </h1>
             <p className="text-xl mb-10 text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed">
-              Digital PR that delivers authority without demanding your time - leave the strategy to us.
+              Digital PR that delivers, without demanding your time.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button 
                 className="btn-primary"
                 onClick={() => window.openContactModal("bespoke")}
               >
-                Book Your Free Authority Audit
+                Book your free Audit
               </button>
               <button 
                 className="btn-secondary"

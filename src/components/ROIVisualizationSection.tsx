@@ -1,3 +1,4 @@
+
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Star } from 'lucide-react';
 
@@ -49,14 +50,20 @@ const ROIVisualizationSection = () => {
     <section className="section-padding bg-light-grey">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="font-bold mb-6 text-reboot-navy">SERP Position Movement Timeline by Niche</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how different investment levels drive SERP ranking position improvements over time. The graph shows position movements based on target keywords.
+          <h2 className="font-bold mb-6 text-reboot-navy">Results You Can See</h2>
+          <h3 className="text-xl font-semibold mb-4 text-reboot-navy">Example SERP Movement Over Time</h3>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+            See how clients in iGaming, Travel, Fashion and Forex moved from page 5 to top 3 in under 4 months.
+          </p>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            The graph shows position movements based on target keywords across some of our key niches.
           </p>
         </div>
 
         <div className="bg-white rounded-2xl p-8 mb-12">
-          <h3 className="text-xl font-bold text-reboot-navy mb-6 text-center">SERP Position Progress Timeline</h3>
+          <p className="text-center text-gray-600 mb-6 italic">
+            See how different investment levels drive SERP ranking position improvements over time.
+          </p>
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={roiData}>

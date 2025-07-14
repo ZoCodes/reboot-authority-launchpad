@@ -7,11 +7,11 @@ const BoltOnServicesSection = () => {
   };
 
   return (
-    <section className="section-padding bg-light-grey">
+    <section id="bolt-on-services" className="section-padding bg-light-grey">
       <div className="container-custom">
         <div className="text-center mb-20">
           <h2 className="font-bold mb-6 text-reboot-navy">
-            Make Your Digital PR Work Harder — Bolt-On Services
+            Bolt-On Services to Maximise ROI
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-medium leading-relaxed">
             Boost your link-building ROI and supercharge your authority with powerful add-ons. 
@@ -26,7 +26,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">Technical SEO Audit</h3>
             <p className="text-gray-600 leading-relaxed">
-              Identify hidden issues holding your site back — ensure your new backlinks drive maximum impact.
+              Identify hidden issues holding your site back to ensure your new backlinks drive maximum impact.
             </p>
           </div>
           
@@ -36,7 +36,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">CRO Audit</h3>
             <p className="text-gray-600 leading-relaxed">
-              Spot where visitors drop off and unlock opportunities to improve conversions and user journeys.
+              Spot where visitors drop off and unlock opportunities to improve conversions post-link building
             </p>
           </div>
           
@@ -46,7 +46,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">GEO Audit</h3>
             <p className="text-gray-600 leading-relaxed">
-              Understand your local authority on AI-driven search and get clear guidance to boost your presence.
+              Understand where you are showing up on AI-driven search and get clear guidance to boost your presence.
             </p>
           </div>
           
@@ -56,7 +56,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">Statistics Asset</h3>
             <p className="text-gray-600 leading-relaxed">
-              Rank organically for high-value keywords and earn hyper-relevant backlinks with compelling data assets.
+              Rank organically for high-value keywords and earn hyper-relevant backlinks passively with compelling data assets.
             </p>
           </div>
           
@@ -66,7 +66,7 @@ const BoltOnServicesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4 text-reboot-navy">AiPR Package</h3>
             <p className="text-gray-600 leading-relaxed">
-              Tap into AI-powered media lists and campaigns designed specifically to boost authority in AI-led search.
+              Tap into AI-powered media lists and campaigns designed specifically to boost authority in AI-led search and LLMs
             </p>
           </div>
           
@@ -74,16 +74,16 @@ const BoltOnServicesSection = () => {
             <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mb-6">
               <div className="w-6 h-6 bg-reboot-pink rounded"></div>
             </div>
-            <h3 className="text-xl font-bold mb-4 text-reboot-navy">5x Regional SEO Onsite Copy</h3>
+            <h3 className="text-xl font-bold mb-4 text-reboot-navy">Local SEO Onsite Package</h3>
             <p className="text-gray-600 leading-relaxed">
-              Ideal for local businesses ready to out-rank competitors with targeted, geo-specific content.
+              5x content pieces made for local businesses ready to out-rank competitors with targeted, geo-specific content.
             </p>
           </div>
         </div>
 
         <div className="text-center mt-12">
           <button onClick={handleContactClick} className="btn-primary">
-            Speak to our Growth team about how these bolt-ons can work for you
+            Speak to our Growth team about how these add-ons can work for you
           </button>
         </div>
       </div>

@@ -40,10 +40,10 @@ const IndustryExamples = () => {
   return (
     <div className="mb-20">
       <h3 className="text-2xl font-bold text-center text-reboot-navy mb-6">
-        Suggestions by Niche
+        Suggestions by sector
       </h3>
       <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        Our data knows what will move the needle in your niche
+        We use 10+ years of data to suggest realistic KPIs and timeframes for your niche. Whether you're in finance, health, SaaS, or homeware – we've tested and delivered.
       </p>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
         {industries.map((industry, index) => (

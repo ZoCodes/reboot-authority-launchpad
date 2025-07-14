@@ -2,7 +2,10 @@
 const PaymentOptions = () => {
   return (
     <div className="bg-light-grey rounded-2xl p-10 max-w-4xl mx-auto">
-      <h3 className="text-2xl font-bold mb-8 text-center text-reboot-navy">Flexible Payment Options</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center text-reboot-navy">Flexible payment options</h3>
+      <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+        No long contracts, surprises or lock-ins. We are so confident in our work and results, that you can pay per project or run a split payment plan.
+      </p>
       <div className="grid md:grid-cols-3 gap-6">
         <div className="text-center">
           <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">

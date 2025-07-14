@@ -4,10 +4,10 @@ const FeaturesSection = () => {
     <section id="features" className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What's Included</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">What's included</h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="w-12 h-12 bg-reboot-pink/10 rounded-full flex items-center justify-center mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +15,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Initial Strategy Session</h3>
-            <p>We deep dive into your business, audience, and SEO landscape to deliver and walk through your Authority Audit.</p>
+            <p>We dive into your business, audience, and SEO landscape to deliver and walk through your Authority Audit.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -24,8 +24,8 @@ const FeaturesSection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Guaranteed Link KPIs</h3>
-            <p>Clear, measurable targets for high-quality backlinks.</p>
+            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Guaranteed KPIs</h3>
+            <p>Clear, measurable targets for link numbers and delivery windows</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -35,7 +35,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Dedicated UK Support Team</h3>
-            <p>Your own UK-based digital PR experts and account managers.</p>
+            <p>Your own UK-based digital PR experts and account managers. All with our Reboot world-class training.</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -45,7 +45,17 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Performance Reports</h3>
-            <p>Link tracker with campaign metrics and progress updates.</p>
+            <p>Link tracker with campaign metrics and weekly emails covering off key progress updates.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="w-12 h-12 bg-reboot-pink/10 rounded-full flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-reboot-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Global Delivery</h3>
+            <p>Your campaigns in flight across UK, USA, AU, CA and European markets</p>
           </div>
         </div>
         
