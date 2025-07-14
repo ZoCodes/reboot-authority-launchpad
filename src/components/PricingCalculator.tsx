@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 
@@ -319,7 +318,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onClick={handleCalculate}
               className="btn-primary"
             >
-              {results.showContactSales || results.budget >= BESPOKE_THRESHOLD ? "Contact Sales Team" : "Get Started"}
+              {results.showContactSales || results.budget >= BESPOKE_THRESHOLD ? "Contact Sales Team" : "Launch Zero Intervention Package"}
             </button>
           </div>
         )}
