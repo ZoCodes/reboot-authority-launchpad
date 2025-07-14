@@ -13,13 +13,13 @@ const GetStartedSection = () => {
     },
     {
       number: "03",
-      title: "Watch your backlink profile grow", 
-      description: "We deliver guaranteed backlinks within your chosen timeframe with transparent reporting and expert support throughout."
+      title: "Onboarding session",
+      description: "We discuss your authority audit findings and develop a tailored strategy to maximize your link building ROI and ranking potential."
     },
     {
       number: "04",
-      title: "Onboarding session",
-      description: "We discuss your authority audit findings and develop a tailored strategy to maximize your link building ROI and ranking potential."
+      title: "Watch your backlink profile grow", 
+      description: "We deliver guaranteed backlinks within your chosen timeframe with transparent reporting and expert support throughout."
     }
   ];
 
