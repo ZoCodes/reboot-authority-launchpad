@@ -6,21 +6,30 @@ const PaymentOptions = () => {
       <div className="grid md:grid-cols-3 gap-6">
         <div className="text-center">
           <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <div className="w-6 h-6 bg-reboot-pink rounded"></div>
+            <div className="w-8 h-8 bg-reboot-pink rounded"></div>
           </div>
           <h4 className="font-semibold text-reboot-navy mb-2">Pay upfront in full</h4>
           <p className="text-gray-600 text-sm">Single payment, maximum savings</p>
         </div>
         <div className="text-center">
           <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <div className="w-6 h-6 bg-reboot-pink rounded"></div>
+            <div className="flex gap-1">
+              <div className="w-3.5 h-6 bg-reboot-pink rounded"></div>
+              <div className="w-3.5 h-6 bg-reboot-pink rounded"></div>
+            </div>
           </div>
           <h4 className="font-semibold text-reboot-navy mb-2">50/50 split</h4>
           <p className="text-gray-600 text-sm">Half upfront, half on completion</p>
         </div>
         <div className="text-center">
           <div className="w-12 h-12 bg-reboot-pink/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <div className="w-6 h-6 bg-reboot-pink rounded"></div>
+            <div className="flex gap-1">
+              <div className="w-4 h-6 bg-reboot-pink rounded"></div>
+              <div className="flex flex-col gap-0.5">
+                <div className="w-2.5 h-2.5 bg-reboot-pink rounded"></div>
+                <div className="w-2.5 h-2.5 bg-reboot-pink rounded"></div>
+              </div>
+            </div>
           </div>
           <h4 className="font-semibold text-reboot-navy mb-2">50/25/25 tiered</h4>
           <p className="text-gray-600 text-sm">Staged payments to completion milestones</p>
