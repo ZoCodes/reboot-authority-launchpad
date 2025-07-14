@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
+import { analyzeDomain, DomainAnalysis } from "@/utils/domainUtils";
 
 interface CalculatorResults {
   market: string;
   budget: number;
+  targetDomain?: string;
+  domainAnalysis?: DomainAnalysis;
   linksCount?: number;
   deliveryWindow: string;
   costPerLink?: number;
@@ -15,6 +18,8 @@ interface CalculatorResults {
   standardCostPerLink?: number;
   discountedCostPerLink?: number;
   discountPercentage?: number;
+  hasDomainSurcharge?: boolean;
+  domainSurchargeAmount?: number;
 }
 
 interface PricingCalculatorProps {
@@ -24,7 +29,9 @@ interface PricingCalculatorProps {
 const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
   const [market, setMarket] = useState("global");
   const [budget, setBudget] = useState("");
+  const [targetDomain, setTargetDomain] = useState("");
   const [results, setResults] = useState<CalculatorResults | null>(null);
+  const [domainAnalysis, setDomainAnalysis] = useState<DomainAnalysis | null>(null);
 
   const marketRates = {
     global: 650,
@@ -41,6 +48,16 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
   const TIER_1_THRESHOLD = 90000;  // 10% discount
   const TIER_2_THRESHOLD = 151000; // 15% discount
   const BESPOKE_THRESHOLD = 250000;
+
+  // Analyze domain when it changes
+  useEffect(() => {
+    if (targetDomain.trim()) {
+      const analysis = analyzeDomain(targetDomain);
+      setDomainAnalysis(analysis);
+    } else {
+      setDomainAnalysis(null);
+    }
+  }, [targetDomain]);
 
   const getVolumeDiscount = (budgetAmount: number) => {
     if (budgetAmount >= TIER_2_THRESHOLD && budgetAmount < BESPOKE_THRESHOLD) {
@@ -91,6 +108,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         const newResults = {
           market,
           budget: budgetNum,
+          targetDomain: targetDomain || undefined,
+          domainAnalysis: domainAnalysis || undefined,
           deliveryWindow: "Contact for Bespoke Solution",
           showContactSales: true
         };
@@ -101,33 +120,51 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         onResultsChange(null);
       }
     } else if (budgetNum >= 5000) {
+      // Check if domain is blocked
+      if (domainAnalysis?.isBlocked) {
+        setResults(null);
+        onResultsChange(null);
+        return;
+      }
+
       const standardCostPerLink = marketRates[market as keyof typeof marketRates];
+      
+      // Apply domain surcharge if needed
+      const domainMultiplier = domainAnalysis?.priceMultiplier || 1;
+      const adjustedCostPerLink = standardCostPerLink * domainMultiplier;
+      
       const volumeDiscount = getVolumeDiscount(budgetNum);
       const hasVolumeDiscount = volumeDiscount.rate > 0 && budgetNum < BESPOKE_THRESHOLD;
-      const discountedCostPerLink = hasVolumeDiscount 
-        ? standardCostPerLink * (1 - volumeDiscount.rate)
-        : standardCostPerLink;
+      const finalCostPerLink = hasVolumeDiscount 
+        ? adjustedCostPerLink * (1 - volumeDiscount.rate)
+        : adjustedCostPerLink;
       
-      const linksCount = Math.floor(budgetNum / discountedCostPerLink);
-      const standardLinksCount = hasVolumeDiscount ? Math.floor(budgetNum / standardCostPerLink) : undefined;
+      const linksCount = Math.floor(budgetNum / finalCostPerLink);
+      const standardLinksCount = hasVolumeDiscount ? Math.floor(budgetNum / adjustedCostPerLink) : undefined;
       const bonusLinks = hasVolumeDiscount ? linksCount - standardLinksCount! : undefined;
       
       const deliveryWindow = getDeliveryWindow(budgetNum);
       const hideLinksCount = budgetNum >= BESPOKE_THRESHOLD;
+      const hasDomainSurcharge = domainMultiplier > 1;
+      const domainSurchargeAmount = hasDomainSurcharge ? Math.round((domainMultiplier - 1) * 100) : undefined;
       
       const newResults = {
         market,
         budget: budgetNum,
+        targetDomain: targetDomain || undefined,
+        domainAnalysis: domainAnalysis || undefined,
         linksCount: hideLinksCount ? undefined : linksCount,
         deliveryWindow,
-        costPerLink: hideLinksCount ? undefined : discountedCostPerLink,
+        costPerLink: hideLinksCount ? undefined : finalCostPerLink,
         hideLinksCount,
         hasVolumeDiscount,
         standardLinksCount,
         bonusLinks,
-        standardCostPerLink: hasVolumeDiscount ? standardCostPerLink : undefined,
-        discountedCostPerLink: hasVolumeDiscount ? discountedCostPerLink : undefined,
-        discountPercentage: hasVolumeDiscount ? volumeDiscount.percentage : undefined
+        standardCostPerLink: hasVolumeDiscount ? adjustedCostPerLink : undefined,
+        discountedCostPerLink: hasVolumeDiscount ? finalCostPerLink : undefined,
+        discountPercentage: hasVolumeDiscount ? volumeDiscount.percentage : undefined,
+        hasDomainSurcharge,
+        domainSurchargeAmount
       };
       
       setResults(newResults);
@@ -136,7 +173,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       setResults(null);
       onResultsChange(null);
     }
-  }, [market, budget, onResultsChange]);
+  }, [market, budget, domainAnalysis, onResultsChange, targetDomain]);
 
   const handleCalculate = () => {
     if (results?.showContactSales || (results && results.budget >= BESPOKE_THRESHOLD)) {
@@ -167,8 +204,42 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
 
   return (
     <div className="max-w-4xl mx-auto mb-20">
-      <div className="bg-light-grey rounded-2xl p-8">
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+      {/* Calculator Header */}
+      <div className="bg-gray-900 rounded-t-2xl p-4 border-b-2 border-gray-700">
+        <div className="bg-gray-800 rounded-lg p-4 font-mono">
+          <div className="text-green-400 text-sm mb-2">DIGITAL PR CALCULATOR v2.0</div>
+          <div className="text-green-300 text-lg">
+            {budgetNum >= 5000 ? `£${budgetNum.toLocaleString()} BUDGET ENTERED` : 'ENTER YOUR REQUIREMENTS...'}
+          </div>
+          {domainAnalysis?.domain && (
+            <div className="text-yellow-300 text-sm mt-1">
+              TARGET: {domainAnalysis.domain.toUpperCase()}
+              {domainAnalysis.hasTriggeredContent && (
+                <span className="text-orange-300 ml-2">
+                  [{domainAnalysis.contentCategory?.toUpperCase()}]
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="bg-gray-100 rounded-b-2xl p-8 border-2 border-t-0 border-gray-300">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <label htmlFor="targetDomain" className="block text-sm font-semibold text-reboot-navy mb-3">
+              Target Domain
+            </label>
+            <input
+              type="text"
+              id="targetDomain"
+              value={targetDomain}
+              onChange={(e) => setTargetDomain(e.target.value)}
+              placeholder="e.g. yoursite.com"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent font-mono"
+            />
+          </div>
+
           <div>
             <label htmlFor="market" className="block text-sm font-semibold text-reboot-navy mb-3">
               Target Market
@@ -203,13 +274,30 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               onChange={(e) => setBudget(e.target.value)}
               placeholder="Enter your budget"
               min="5000"
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent font-mono"
             />
           </div>
         </div>
 
+        {/* Domain Analysis Messages */}
+        {domainAnalysis?.isBlocked && (
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
+            <p className="text-red-800 text-center font-medium">
+              ❌ This domain contains blocked content and cannot be processed. Please contact our team for alternative solutions.
+            </p>
+          </div>
+        )}
+
+        {domainAnalysis?.hasTriggeredContent && !domainAnalysis.isBlocked && (
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
+            <p className="text-orange-800 text-center font-medium">
+              ⚠️ {domainAnalysis.contentCategory} domains require specialized outreach (+{Math.round((domainAnalysis.priceMultiplier - 1) * 100)}% premium pricing)
+            </p>
+          </div>
+        )}
+
         {/* Enhanced tiered hint messaging */}
-        {hintMessage && market !== "other" && (
+        {hintMessage && market !== "other" && !domainAnalysis?.isBlocked && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
             <p className="text-yellow-800 text-center font-medium">
               {hintMessage}
@@ -218,7 +306,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         )}
 
         {/* Sweet spot messaging for those already in Tier 1 */}
-        {budgetNum >= TIER_1_THRESHOLD && budgetNum < 140000 && market !== "other" && (
+        {budgetNum >= TIER_1_THRESHOLD && budgetNum < 140000 && market !== "other" && !domainAnalysis?.isBlocked && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
             <p className="text-green-800 text-center font-medium">
               ✅ You're enjoying 10% volume pricing! <span className="text-sm text-green-600">Tip: 15% discount unlocks at £{TIER_2_THRESHOLD.toLocaleString()}</span>
@@ -227,20 +315,23 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
         )}
 
         {results?.showContactSales && (
-          <div className="bg-white rounded-xl p-6 mb-6">
+          <div className="bg-white rounded-xl p-6 mb-6 border-2 border-gray-300">
             <div className="text-center">
               <h3 className="text-xl font-bold text-reboot-navy mb-4">Bespoke Solution Required</h3>
               <p className="text-gray-600 mb-4">
                 For multiple markets or custom requirements, our sales team will create a tailored solution for your needs.
               </p>
-              <div className="text-3xl font-bold text-reboot-pink mb-2">£{results.budget.toLocaleString()}</div>
+              <div className="text-3xl font-bold text-reboot-pink mb-2 font-mono">£{results.budget.toLocaleString()}</div>
               <div className="text-sm text-gray-600">Budget Available</div>
+              {results.targetDomain && (
+                <div className="text-sm text-gray-500 mt-2">Target: {results.targetDomain}</div>
+              )}
             </div>
           </div>
         )}
 
-        {results && !results.showContactSales && (
-          <div className="bg-white rounded-xl p-6 mb-6">
+        {results && !results.showContactSales && !domainAnalysis?.isBlocked && (
+          <div className="bg-white rounded-xl p-6 mb-6 border-2 border-gray-300">
             {results.hasVolumeDiscount && (
               <div className="flex justify-center mb-4">
                 <Badge className={`${results.discountPercentage === 15 ? 'bg-purple-500' : 'bg-green-500'} text-white px-4 py-2 text-sm font-semibold`}>
@@ -249,11 +340,19 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
               </div>
             )}
             
+            {results.hasDomainSurcharge && (
+              <div className="flex justify-center mb-4">
+                <Badge className="bg-orange-500 text-white px-4 py-2 text-sm font-semibold">
+                  📈 +{results.domainSurchargeAmount}% {domainAnalysis?.contentCategory} Premium
+                </Badge>
+              </div>
+            )}
+            
             <h3 className="text-xl font-bold text-reboot-navy mb-4">Your Package</h3>
             <div className={`grid ${results.hideLinksCount ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-6`}>
               {!results.hideLinksCount && (
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-reboot-pink mb-2">{results.linksCount}</div>
+                  <div className="text-3xl font-bold text-reboot-pink mb-2 font-mono">{results.linksCount}</div>
                   <div className="text-sm text-gray-600">
                     {results.hasVolumeDiscount ? "Total Links (with bonus)" : "Guaranteed Links"}
                   </div>
@@ -265,7 +364,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
                 </div>
               )}
               <div className="text-center">
-                <div className="text-3xl font-bold text-reboot-pink mb-2">£{results.budget.toLocaleString()}</div>
+                <div className="text-3xl font-bold text-reboot-pink mb-2 font-mono">£{results.budget.toLocaleString()}</div>
                 <div className="text-sm text-gray-600">Total Investment</div>
               </div>
               <div className="text-center">
@@ -283,15 +382,27 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="text-gray-600">Standard rate:</div>
-                      <div className="font-medium">£{results.standardCostPerLink} per link</div>
+                      <div className="font-medium font-mono">£{results.standardCostPerLink} per link</div>
                       <div className="text-gray-500">({results.standardLinksCount} links)</div>
                     </div>
                     <div>
                       <div className="text-gray-600">Volume rate ({results.discountPercentage}% off):</div>
-                      <div className="font-medium text-green-600">£{Math.round(results.discountedCostPerLink!)} per link</div>
+                      <div className="font-medium text-green-600 font-mono">£{Math.round(results.discountedCostPerLink!)} per link</div>
                       <div className="text-green-600">({results.linksCount} links total)</div>
                     </div>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {results.hasDomainSurcharge && !results.hideLinksCount && (
+              <div className="mt-4 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <div className="text-center">
+                  <h4 className="font-semibold text-orange-800 mb-2">{domainAnalysis?.contentCategory} Premium Applied</h4>
+                  <p className="text-sm text-orange-700">
+                    This content category requires specialized outreach strategies and journalist relationships, 
+                    resulting in a {results.domainSurchargeAmount}% premium on standard rates.
+                  </p>
                 </div>
               </div>
             )}
@@ -312,11 +423,11 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           </div>
         )}
 
-        {results && (
+        {results && !domainAnalysis?.isBlocked && (
           <div className="text-center">
             <button
               onClick={handleCalculate}
-              className="btn-primary"
+              className="btn-primary bg-gradient-to-r from-reboot-pink to-purple-600 hover:from-purple-600 hover:to-reboot-pink text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               {results.showContactSales || results.budget >= BESPOKE_THRESHOLD ? "Contact Sales Team" : "Launch Zero Intervention Package"}
             </button>
