@@ -34,15 +34,15 @@ const CalculatorForm = ({
 
       <div>
         <label htmlFor="market" className="block text-sm font-semibold text-reboot-navy mb-3">
-          Target Market
+          Preferred Target Market
         </label>
+        <p className="text-xs text-gray-600 mb-2">All outreach will be global, but we'll prioritize your selected market</p>
         <select
           id="market"
           value={market}
           onChange={(e) => setMarket(e.target.value)}
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white font-mono"
         >
-          <option value="global">Global - No market preference ⭐ Recommended</option>
           <option value="english">English</option>
           <option value="american">American</option>
           <option value="canadian">Canadian</option>

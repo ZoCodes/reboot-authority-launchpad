@@ -1,49 +1,49 @@
 
+import { BarChart3, Clock, Users, Globe } from "lucide-react";
+
 const WhyChooseSection = () => {
   return (
-    <section id="why-choose" className="section-padding bg-gray-50">
-      <div className="container-custom">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose a Reboot Authority Programme?</h2>
+    <section id="why-choose" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Stop Wasting Your Digital PR Budget</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            Get guaranteed backlinks, transparent delivery timelines, and measurable results from the UK's largest dedicated digital PR team.
+          </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="w-16 h-16 bg-reboot-pink/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-reboot-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
+            <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BarChart3 className="h-8 w-8 text-pink-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Data-Driven Impact</h3>
-            <p>Senior digital PR experts + PhD-level data scientists delivering guaranteed backlinks from trusted DR30+ domains.</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900">Data-Driven Impact</h3>
+            <p className="text-gray-600">Senior digital PR experts + PhD-level data scientists delivering guaranteed backlinks from trusted DR30+ domains.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="w-16 h-16 bg-reboot-pink/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-reboot-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock className="h-8 w-8 text-pink-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Clear Delivery Windows & Real Outcomes</h3>
-            <p>Transparent fixed delivery timelines with guaranteed link targets and flexible payment plans.</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900">Clear Delivery Windows</h3>
+            <p className="text-gray-600">Transparent fixed delivery timelines with guaranteed link targets and flexible payment plans.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="w-16 h-16 bg-reboot-pink/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-reboot-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
+            <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users className="h-8 w-8 text-pink-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-reboot-navy">UK-Based Team You Can Trust</h3>
-            <p>Largest dedicated UK digital PR team — no outsourcing. Strategists who know your market and priorities.</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900">UK-Based Team You Can Trust</h3>
+            <p className="text-gray-600">Largest dedicated UK digital PR team - no outsourcing. Strategists who know your market and priorities.</p>
           </div>
-        </div>
 
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold mb-6 text-reboot-navy">Global Market Coverage</h3>
-          <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto">
-            Campaigns across the UK, USA, CA, AU, FR, DE, IT and ES - one market at a time or bespoke multi-market plans. Additional markets on request.
-          </p>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Globe className="h-8 w-8 text-pink-500" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900">Global Market Coverage</h3>
+            <p className="text-gray-600">Campaigns that can reach world wide - we use the full force of our journalist network to secure results.</p>
+          </div>
         </div>
       </div>
     </section>
