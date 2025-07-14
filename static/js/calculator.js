@@ -5,7 +5,7 @@
 
 let calculatorState = {
     targetDomain: '',
-    market: 'global',
+    market: 'english',
     budget: 0,
     domainAnalysis: null,
     results: null

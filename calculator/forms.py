@@ -48,7 +48,6 @@ class ContactForm(forms.ModelForm):
 
 class CalculatorForm(forms.Form):
     MARKET_CHOICES = [
-        ('global', 'Global - No market preference ⭐ Recommended'),
         ('english', 'English'),
         ('american', 'American'),
         ('canadian', 'Canadian'),
@@ -71,7 +70,7 @@ class CalculatorForm(forms.Form):
     
     market = forms.ChoiceField(
         choices=MARKET_CHOICES,
-        initial='global',
+        initial='english',
         widget=forms.Select(attrs={
             'class': 'w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white font-mono',
             'id': 'market'
