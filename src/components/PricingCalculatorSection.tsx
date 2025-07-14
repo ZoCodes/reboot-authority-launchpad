@@ -19,9 +19,6 @@ const PricingCalculatorSection = () => {
             </Badge>
           </div>
           <h2 className="font-bold mb-6 text-reboot-navy">Calculate Your Investment</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Hands-off, full-service link building with complete editorial freedom
-          </p>
         </div>
 
         {/* What to Expect from a Zero Intervention Campaign */}
