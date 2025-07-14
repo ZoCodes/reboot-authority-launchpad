@@ -10,7 +10,7 @@ const HeroSection = () => {
               <span className="text-reboot-pink">Calculated For</span> Your Business Goals
             </h1>
             <p className="text-xl mb-10 text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed">
-              The right amount of link earning to gain authority in your field - with delivery windows, set KPIs and SEO expertise.
+              Digital PR that delivers authority without demanding your time - leave the strategy to us.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button 
