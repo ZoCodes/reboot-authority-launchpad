@@ -10,9 +10,9 @@ export interface DomainAnalysis {
   priceMultiplier: number;
 }
 
-// Words that trigger 20% price increase
+// Words that trigger 20% price increase - focused on iGaming and Finance
 const TRIGGER_WORDS = [
-  'online', 'casino', 'poker', 'blackjack', 'adult', 'vape', 'smoking', 
+  'casino', 'poker', 'blackjack', 'adult', 'vape', 'smoking', 
   'cigarette', 'betting', 'gambling', 'crypto', 'forex', 'payday', 'loan',
   'slots', 'roulette', 'bingo', 'sportsbook', 'bookmaker', 'wager'
 ];
@@ -92,7 +92,7 @@ export const analyzeDomain = (input: string): DomainAnalysis => {
     } else if (triggeredWords.some(word => ['adult'].includes(word))) {
       contentCategory = 'Adult Content';
     } else {
-      contentCategory = 'Online Services';
+      contentCategory = 'Specialized Services';
     }
   }
   
