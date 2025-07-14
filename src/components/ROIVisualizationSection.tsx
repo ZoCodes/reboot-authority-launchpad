@@ -1,4 +1,3 @@
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Star } from 'lucide-react';
 
@@ -15,8 +14,7 @@ const ROIVisualizationSection = () => {
     { 
       name: 'iGaming & Sport', 
       color: '#F2196C', 
-      investment: '£108,000',
-      originalInvestment: '£90,000',
+      investment: '£90,000',
       targetPosition: 'Position 1-3',
       keyword: 'football betting',
       isSpecialized: true
@@ -40,8 +38,7 @@ const ROIVisualizationSection = () => {
     { 
       name: 'Finance', 
       color: '#10B981', 
-      investment: '£144,000',
-      originalInvestment: '£120,000',
+      investment: '£120,000',
       targetPosition: 'Position 1-2',
       keyword: 'forex broker comparison',
       isSpecialized: true
@@ -107,7 +104,7 @@ const ROIVisualizationSection = () => {
               {niche.isSpecialized && (
                 <div className="mb-3 p-2 bg-orange-100 rounded-lg">
                   <span className="text-xs text-orange-700 font-medium">
-                    ⚠️ Specialized Sector (+20% premium)
+                    ⚠️ Specialized Sector
                   </span>
                 </div>
               )}
@@ -115,14 +112,7 @@ const ROIVisualizationSection = () => {
               <div className="space-y-2 mb-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600 text-sm">Investment:</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-reboot-navy">{niche.investment}</span>
-                    {niche.isSpecialized && (
-                      <div className="text-xs text-gray-500 line-through">
-                        {niche.originalInvestment}
-                      </div>
-                    )}
-                  </div>
+                  <span className="font-semibold text-reboot-navy">{niche.investment}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 text-sm">Target:</span>
