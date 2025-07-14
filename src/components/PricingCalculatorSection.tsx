@@ -75,7 +75,7 @@ const PricingCalculatorSection = () => {
         {/* Enhanced Qualification Messaging */}
         <div className="bg-reboot-pink/5 rounded-2xl p-6 mb-12 text-center border border-reboot-pink/20">
           <p className="text-gray-700 mb-4">
-            <strong>Perfect for brands wanting professional results without operational involvement.</strong>
+            <strong>Perfect for businesses wanting to leave digital PR strategy & delivery to the experts.</strong>
           </p>
           <p className="text-sm text-gray-600">
             Need hands-on strategy input or collaborative campaign development? 
