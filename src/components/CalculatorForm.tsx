@@ -40,7 +40,7 @@ const CalculatorForm = ({
           id="market"
           value={market}
           onChange={(e) => setMarket(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white"
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent bg-white font-mono"
         >
           <option value="global">Global - No market preference ⭐ Recommended</option>
           <option value="english">English</option>
