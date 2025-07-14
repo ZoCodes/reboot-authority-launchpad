@@ -33,10 +33,10 @@ const CalculatorForm = ({
       </div>
 
       <div>
-        <label htmlFor="market" className="block text-sm font-semibold text-reboot-navy mb-3">
+        <label htmlFor="market" className="block text-sm font-semibold text-reboot-navy mb-1">
           Preferred Target Market
         </label>
-        <p className="text-xs text-gray-600 mb-2">All outreach will be global, but we'll prioritize your selected market</p>
+        <p className="text-xs text-gray-600 mb-2 min-h-[2rem] flex items-center">All outreach will be global, but we'll prioritize your selected market</p>
         <select
           id="market"
           value={market}
@@ -56,9 +56,10 @@ const CalculatorForm = ({
       </div>
       
       <div>
-        <label htmlFor="budget" className="block text-sm font-semibold text-reboot-navy mb-3">
+        <label htmlFor="budget" className="block text-sm font-semibold text-reboot-navy mb-1">
           Budget (minimum £5,000)
         </label>
+        <div className="min-h-[2rem] mb-2"></div>
         <input
           type="number"
           id="budget"
