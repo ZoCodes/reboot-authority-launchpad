@@ -24,57 +24,55 @@ const PricingCalculatorSection = () => {
           </p>
         </div>
 
-        {/* Zero Intervention Features */}
+        {/* What to Expect from a Zero Intervention Campaign */}
         <div className="bg-light-grey rounded-2xl p-8 mb-12">
-          <h3 className="text-2xl font-bold text-reboot-navy mb-6 text-center">Perfect for Hands-Off Growth</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center">
-              <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h4 className="font-semibold text-reboot-navy mb-2">Full Editorial Freedom</h4>
-              <p className="text-sm text-gray-600">We handle strategy and media selection for maximum impact</p>
+          <h3 className="text-2xl font-bold text-reboot-navy mb-6 text-center">What to Expect from a Zero Intervention Campaign</h3>
+          <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+            These campaigns are designed to deliver impact without draining your time. You leave it to us as the experts and we get to work.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl p-6">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-reboot-navy mb-2">High-Authority, Global Coverage</h4>
+                  <p className="text-gray-600">Our outreach isn't limited by region, sector, or contact lists. We use the full force of our journalist network to secure results.</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h4 className="font-semibold text-reboot-navy mb-2">Global High-Authority</h4>
-              <p className="text-sm text-gray-600">Target the best sites globally with no restrictions</p>
+            <div className="bg-white rounded-xl p-6">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-reboot-navy mb-2">Creative Freedom = Better Coverage</h4>
+                  <p className="text-gray-600">We'll aim to keep campaigns relevant to your niche, but we retain full flexibility to broaden the topic if that's what it takes to earn top-tier press.</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h4 className="font-semibold text-reboot-navy mb-2">Streamlined Reporting</h4>
-              <p className="text-sm text-gray-600">Perfect for busy teams - no micromanagement needed</p>
+            <div className="bg-white rounded-xl p-6">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-reboot-navy mb-2">Set It and Forget It</h4>
+                  <p className="text-gray-600">Once your target landing page is locked in, we get cracking. Changing domains mid-way would disrupt delivery, so we keep focus consistent.</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h4 className="font-semibold text-reboot-navy mb-2">No Approval Delays</h4>
-              <p className="text-sm text-gray-600">Campaign topics optimized for editorial interest</p>
+            <div className="bg-white rounded-xl p-6">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-reboot-navy mb-2">Minimal Calls, Maximum Output</h4>
+                  <p className="text-gray-600">You'll have an onboarding call to kick things off, and a wrap-up call at the end. The rest? We handle it all.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
         <PricingCalculator onResultsChange={setCalculatorResults} />
 
-        {/* Terms & Expectations */}
-        <div className="bg-white rounded-2xl p-8 mb-12 border border-gray-200">
-          <h3 className="text-xl font-bold text-reboot-navy mb-4 text-center">What to Expect</h3>
-          <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
-            <div>
-              <ul className="space-y-2">
-                <li>• We target the best sites globally for maximum impact</li>
-                <li>• Campaign topics optimized for editorial interest and your sector</li>
-                <li>• Streamlined communication - perfect for hands-off growth</li>
-              </ul>
-            </div>
-            <div>
-              <ul className="space-y-2">
-                <li>• No domain changes during campaign period</li>
-                <li>• Onboarding call and end-of-term wrap-up included</li>
-                <li>• Professional results without operational involvement</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Qualification Messaging */}
+        {/* Enhanced Qualification Messaging */}
         <div className="bg-reboot-pink/5 rounded-2xl p-6 mb-12 text-center border border-reboot-pink/20">
           <p className="text-gray-700 mb-4">
             <strong>Perfect for brands wanting professional results without operational involvement.</strong>
