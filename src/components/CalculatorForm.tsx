@@ -1,4 +1,5 @@
 
+
 interface CalculatorFormProps {
   targetDomain: string;
   setTargetDomain: (value: string) => void;
@@ -19,9 +20,10 @@ const CalculatorForm = ({
   return (
     <div className="grid md:grid-cols-3 gap-6 mb-8">
       <div>
-        <label htmlFor="targetDomain" className="block text-sm font-semibold text-reboot-navy mb-3">
+        <label htmlFor="targetDomain" className="block text-sm font-semibold text-reboot-navy mb-1">
           Target Domain
         </label>
+        <div className="min-h-[2rem] mb-2"></div>
         <input
           type="text"
           id="targetDomain"
@@ -75,3 +77,4 @@ const CalculatorForm = ({
 };
 
 export default CalculatorForm;
+
