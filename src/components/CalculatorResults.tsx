@@ -107,26 +107,6 @@ const CalculatorResultsComponent = ({ results, domainAnalysis, onCalculate, BESP
             </div>
           </div>
         </div>
-        
-        {results.hasVolumeDiscount && !results.hideLinksCount && (
-          <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-            <div className="text-center">
-              <h4 className="font-semibold text-green-800 mb-2">{results.discountPercentage}% Volume Discount Breakdown</h4>
-              <div className="grid md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <div className="text-gray-600">Standard rate:</div>
-                  <div className="font-medium font-mono">£{results.standardCostPerLink} per link</div>
-                  <div className="text-gray-500">({results.standardLinksCount} links)</div>
-                </div>
-                <div>
-                  <div className="text-gray-600">Volume rate ({results.discountPercentage}% off):</div>
-                  <div className="font-medium text-green-600 font-mono">£{Math.round(results.discountedCostPerLink!)} per link</div>
-                  <div className="text-green-600">({results.linksCount} links total)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {results.hasDomainSurcharge && !results.hideLinksCount && (
           <div className="mt-4 p-4 bg-orange-50 rounded-lg border border-orange-200">
