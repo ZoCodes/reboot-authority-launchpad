@@ -97,7 +97,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
     if (budgetAmount >= 150000) return "12 months";
     if (budgetAmount >= 100000) return "10 months";
     if (budgetAmount >= 50000) return "6 months";
-    return "4 months";
+    if (budgetAmount >= 19000) return "4 months";
+    return "2 months";
   };
 
   useEffect(() => {

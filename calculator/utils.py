@@ -206,7 +206,9 @@ def get_delivery_window(budget: float, bespoke_threshold: float) -> str:
         return "10 months"
     elif budget >= 50000:
         return "6 months"
-    return "4 months"
+    elif budget >= 19000:
+        return "4 months"
+    return "2 months"
 
 def get_hint_message(budget: float) -> Optional[str]:
     """Generate hint messages for volume discounts"""
