@@ -10,6 +10,7 @@ import BoltOnServicesSection from "@/components/BoltOnServicesSection";
 import FlexibleGrowthSection from "@/components/FlexibleGrowthSection";
 import WhyBrandsChooseSection from "@/components/WhyBrandsChooseSection";
 import ROIVisualizationSection from "@/components/ROIVisualizationSection";
+import ClientTestimonialsSection from "@/components/ClientTestimonialsSection";
 import BespokeSection from "@/components/BespokeSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
@@ -50,6 +51,7 @@ const Index = () => {
       <FlexibleGrowthSection />
       <WhyBrandsChooseSection />
       <ROIVisualizationSection />
+      <ClientTestimonialsSection />
       <BespokeSection />
       <FinalCTASection />
       <Footer />

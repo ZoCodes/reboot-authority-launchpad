@@ -82,9 +82,9 @@ const BoltOnServicesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button onClick={handleContactClick} className="btn-primary">
-            Speak to our Growth team about how these add-ons can work for you
-          </button>
+            <button onClick={handleContactClick} className="btn-primary">
+              Speak to our Growth team about how these add-ons can work for you
+            </button>
         </div>
       </div>
     </section>

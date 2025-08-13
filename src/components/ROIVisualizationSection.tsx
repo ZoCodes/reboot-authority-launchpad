@@ -13,35 +13,43 @@ const ROIVisualizationSection = () => {
 
   const niches = [
     { 
+      name: 'Travel - UK Market', 
+      emoji: '💡',
+      color: '#132E5B', 
+      investment: '£60,000',
+      targetPosition: 'Position 1–3',
+      keyword: 'book holiday uk',
+      description: 'High-value travel term targeting UK audience with seasonal and evergreen campaign assets.',
+      isSpecialized: false
+    },
+    { 
       name: 'iGaming & Sport', 
+      emoji: '⭐',
       color: '#F2196C', 
-      investment: '£90,000',
-      targetPosition: 'Position 1-3',
-      keyword: 'football betting',
+      investment: '£75,000',
+      targetPosition: 'Position 1–3',
+      keyword: 'sports betting uk',
+      description: 'High-competition, regulated iGaming term requiring premium placements and compliance-aware outreach.',
       isSpecialized: true
     },
     { 
-      name: 'Travel', 
-      color: '#132E5B', 
-      investment: '£30,000', 
-      targetPosition: 'Position 1-5',
-      keyword: 'best holiday packages UK',
-      isSpecialized: false
-    },
-    { 
-      name: 'Apparel', 
+      name: 'Apparel – Niche Footwear', 
+      emoji: '💡',
       color: '#8B5CF6', 
-      investment: '£60,000', 
-      targetPosition: 'Position 1-3',
-      keyword: 'top golf shoes USA',
+      investment: '£18,000–£23,000', 
+      targetPosition: 'Position 1–3',
+      keyword: 'womens fashion hiking boots',
+      description: 'Niche fashion/footwear keyword with high purchase intent. Lower competition allows for reduced link volume while still achieving strong SERP movement.',
       isSpecialized: false
     },
     { 
-      name: 'Finance', 
+      name: 'Finance – Forex', 
+      emoji: '⚠',
       color: '#10B981', 
-      investment: '£120,000',
-      targetPosition: 'Position 1-2',
-      keyword: 'forex broker comparison',
+      investment: '£85,000',
+      targetPosition: 'Position 1–3',
+      keyword: 'forex trading platform',
+      description: 'Ultra-competitive finance keyword with global coverage requirements and high DR link acquisition to drive SERP dominance.',
       isSpecialized: true
     }
   ];
@@ -50,13 +58,10 @@ const ROIVisualizationSection = () => {
     <section className="section-padding bg-light-grey">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="font-bold mb-6 text-reboot-navy">Results You Can See</h2>
+          <h2 className="font-bold mb-6 text-reboot-navy">Results you can see</h2>
           <h3 className="text-xl font-semibold mb-4 text-reboot-navy">Example SERP Movement Over Time</h3>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
-            See how clients in iGaming, Travel, Fashion and Forex moved from page 5 to top 3 in under 4 months.
-          </p>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            The graph shows position movements based on target keywords across some of our key niches.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            We've moved clients in iGaming, Travel, Fashion and Forex from page 5 to top 5 in under 4 months.
           </p>
         </div>
 
@@ -96,10 +101,7 @@ const ROIVisualizationSection = () => {
               }`}
             >
               <div className="flex items-center mb-4">
-                <div 
-                  className="w-4 h-4 rounded-full mr-3"
-                  style={{ backgroundColor: niche.color }}
-                ></div>
+                <span className="text-lg mr-3">{niche.emoji}</span>
                 <h4 className="font-bold text-reboot-navy flex items-center gap-2">
                   {niche.name}
                   {niche.isSpecialized && (
@@ -111,7 +113,15 @@ const ROIVisualizationSection = () => {
               {niche.isSpecialized && (
                 <div className="mb-3 p-2 bg-orange-100 rounded-lg">
                   <span className="text-xs text-orange-700 font-medium">
-                    ⚠️ Specialized Sector
+                    ⚠ Specialised Sector
+                  </span>
+                </div>
+              )}
+              
+              {!niche.isSpecialized && (
+                <div className="mb-3 p-2 bg-blue-100 rounded-lg">
+                  <span className="text-xs text-blue-700 font-medium">
+                    💡 General Sector
                   </span>
                 </div>
               )}
@@ -126,10 +136,11 @@ const ROIVisualizationSection = () => {
                   <span className="font-semibold text-reboot-pink">{niche.targetPosition}</span>
                 </div>
               </div>
-              <div className="bg-gray-50 rounded-lg p-3">
+              <div className="bg-gray-50 rounded-lg p-3 mb-3">
                 <span className="text-xs text-gray-500">Example keyword:</span>
                 <div className="font-medium text-reboot-navy text-sm">"{niche.keyword}"</div>
               </div>
+              <p className="text-xs text-gray-600 leading-relaxed">{niche.description}</p>
             </div>
           ))}
         </div>

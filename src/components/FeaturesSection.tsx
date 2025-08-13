@@ -15,7 +15,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Initial Strategy Session</h3>
-            <p>We dive into your business, audience, and SEO landscape to deliver and walk through your Authority Audit.</p>
+            <p>review of your business, audience, and SEO landscape.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -25,7 +25,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Guaranteed KPIs</h3>
-            <p>Clear, measurable targets for link numbers and delivery windows</p>
+            <p>clear link and delivery targets.</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -35,7 +35,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Dedicated UK Support Team</h3>
-            <p>Your own UK-based digital PR experts and account managers. All with our Reboot world-class training.</p>
+            <p>in-house experts and account managers.</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -45,7 +45,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Performance Reports</h3>
-            <p>Link tracker with campaign metrics and weekly emails covering off key progress updates.</p>
+            <p>live link tracker and weekly email updates.</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -55,7 +55,7 @@ const FeaturesSection = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-3 text-reboot-navy">Global Delivery</h3>
-            <p>Your campaigns in flight across UK, USA, AU, CA and European markets</p>
+            <p>Your campaigns, active across multiple markets. UK, USA, AU, CA and Europe.</p>
           </div>
         </div>
         

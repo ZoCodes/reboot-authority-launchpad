@@ -4,48 +4,59 @@ import { Star } from 'lucide-react';
 const IndustryExamples = () => {
   const industries = [
     {
-      name: "iGaming & Sport",
-      budget: "£90,000",
-      links: "110 links",
-      delivery: "10 months",
-      description: "High-competition verticals requiring premium placements",
-      isSpecialized: true
+      name: "Automotive",
+      budget: "£18,500",
+      links: "28",
+      delivery: "2 months",
+      description: "Vehicle and automotive services sector",
+      isSpecialized: false
     },
     {
-      name: "Travel",
-      budget: "£30,000",
-      links: "46 links", 
+      name: "Education",
+      budget: "£48,300",
+      links: "74", 
       delivery: "4 months",
-      description: "Seasonal campaigns with targeted geographic focus",
+      description: "Educational institutions and e-learning platforms",
       isSpecialized: false
     },
     {
-      name: "Apparel",
-      budget: "£60,000",
-      links: "92 links",
+      name: "Real Estate",
+      budget: "£25,700",
+      links: "39",
+      delivery: "4 months",
+      description: "Property and real estate services",
+      isSpecialized: false
+    },
+    {
+      name: "iGaming",
+      budget: "£63,500",
+      links: "81",
       delivery: "6 months",
-      description: "Fashion and lifestyle brands building authority",
-      isSpecialized: false
+      description: "High-competition gambling and gaming sector",
+      isSpecialized: true
     },
     {
-      name: "Finance",
-      budget: "£120,000",
-      links: "147 links",
-      delivery: "10 months",
-      description: "Regulated sectors requiring high-authority domains",
-      isSpecialized: true
+      name: "Travel - DE Market",
+      budget: "£38,200",
+      links: "38",
+      delivery: "4 months",
+      description: "German market travel and tourism campaigns",
+      isSpecialized: false
     }
   ];
 
   return (
     <div className="mb-20">
       <h3 className="text-2xl font-bold text-center text-reboot-navy mb-6">
-        Suggestions by sector
+        Suggested packages by sector
       </h3>
-      <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        We use 10+ years of data to suggest realistic KPIs and timeframes for your niche. Whether you're in finance, health, SaaS, or homeware – we've tested and delivered.
+      <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+        With over 10 years of data, we suggest realistic KPIs and timeframes for your niche. Whether you're in finance, education, travel, or home - we've tested, refined, and delivered.
       </p>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+      <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        For the most cost-effective way to earn links long-term, explore our <a href="#" className="text-pink-500 hover:underline">hyper relevancy link building projects</a>.
+      </p>
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-6">
         {industries.map((industry, index) => (
           <div 
             key={index} 
