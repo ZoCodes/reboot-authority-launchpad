@@ -36,6 +36,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
   const [targetDomain, setTargetDomain] = useState("");
   const [results, setResults] = useState<CalculatorResults | null>(null);
   const [domainAnalysis, setDomainAnalysis] = useState<DomainAnalysis | null>(null);
+  const [isRegulatedSector, setIsRegulatedSector] = useState(false);
 
   const marketRates = {
     global: 650,
@@ -128,8 +129,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       }
 
       const standardCostPerLink = marketRates[market as keyof typeof marketRates];
-      const domainMultiplier = domainAnalysis?.priceMultiplier || 1;
-      const adjustedCostPerLink = standardCostPerLink * domainMultiplier;
+      const regulatedMultiplier = isRegulatedSector ? 1.2 : 1;
+      const adjustedCostPerLink = standardCostPerLink * regulatedMultiplier;
       
       const volumeDiscount = getVolumeDiscount(budgetNum);
       const hasVolumeDiscount = volumeDiscount.rate > 0 && budgetNum < BESPOKE_THRESHOLD;
@@ -143,8 +144,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       
       const deliveryWindow = getDeliveryWindow(budgetNum);
       const hideLinksCount = budgetNum >= BESPOKE_THRESHOLD;
-      const hasDomainSurcharge = domainMultiplier > 1;
-      const domainSurchargeAmount = hasDomainSurcharge ? Math.round((domainMultiplier - 1) * 100) : undefined;
+      const hasDomainSurcharge = regulatedMultiplier > 1;
+      const domainSurchargeAmount = hasDomainSurcharge ? Math.round((regulatedMultiplier - 1) * 100) : undefined;
       
       const newResults = {
         market,
@@ -171,7 +172,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
       setResults(null);
       onResultsChange(null);
     }
-  }, [market, budget, domainAnalysis, onResultsChange, targetDomain]);
+  }, [market, budget, domainAnalysis, onResultsChange, targetDomain, isRegulatedSector]);
 
   const handleCalculate = () => {
     if (results?.showContactSales || (results && results.budget >= BESPOKE_THRESHOLD)) {
@@ -196,6 +197,8 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           setMarket={setMarket}
           budget={budget}
           setBudget={setBudget}
+          isRegulatedSector={isRegulatedSector}
+          setIsRegulatedSector={setIsRegulatedSector}
         />
 
         <CalculatorMessages
@@ -205,6 +208,7 @@ const PricingCalculator = ({ onResultsChange }: PricingCalculatorProps) => {
           hintMessage={hintMessage}
           TIER_1_THRESHOLD={TIER_1_THRESHOLD}
           TIER_2_THRESHOLD={TIER_2_THRESHOLD}
+          isRegulatedSector={isRegulatedSector}
         />
 
         <CalculatorResultsComponent

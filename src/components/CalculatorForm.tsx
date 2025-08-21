@@ -7,6 +7,8 @@ interface CalculatorFormProps {
   setMarket: (value: string) => void;
   budget: string;
   setBudget: (value: string) => void;
+  isRegulatedSector: boolean;
+  setIsRegulatedSector: (value: boolean) => void;
 }
 
 const CalculatorForm = ({ 
@@ -15,7 +17,9 @@ const CalculatorForm = ({
   market, 
   setMarket, 
   budget, 
-  setBudget 
+  setBudget,
+  isRegulatedSector,
+  setIsRegulatedSector
 }: CalculatorFormProps) => {
   return (
     <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -71,6 +75,26 @@ const CalculatorForm = ({
           min="5000"
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-reboot-pink focus:border-transparent font-mono"
         />
+      </div>
+
+      <div className="md:col-start-2 md:col-span-2">
+        <div className="flex items-start space-x-3">
+          <input
+            type="checkbox"
+            id="regulatedSector"
+            checked={isRegulatedSector}
+            onChange={(e) => setIsRegulatedSector(e.target.checked)}
+            className="mt-1 h-4 w-4 text-reboot-pink focus:ring-reboot-pink border-gray-300 rounded"
+          />
+          <div>
+            <label htmlFor="regulatedSector" className="block text-sm font-semibold text-reboot-navy cursor-pointer">
+              Regulated Sector
+            </label>
+            <p className="text-xs text-gray-600 mt-1">
+              Tick here if your brand operates in a regulated market (i.e. finance, medical, iGaming or similar)
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

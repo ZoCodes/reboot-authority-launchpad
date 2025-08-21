@@ -8,6 +8,7 @@ interface CalculatorMessagesProps {
   hintMessage: string | null;
   TIER_1_THRESHOLD: number;
   TIER_2_THRESHOLD: number;
+  isRegulatedSector: boolean;
 }
 
 const CalculatorMessages = ({ 
@@ -16,7 +17,8 @@ const CalculatorMessages = ({
   market, 
   hintMessage,
   TIER_1_THRESHOLD,
-  TIER_2_THRESHOLD
+  TIER_2_THRESHOLD,
+  isRegulatedSector
 }: CalculatorMessagesProps) => {
   return (
     <>
@@ -29,10 +31,10 @@ const CalculatorMessages = ({
         </div>
       )}
 
-      {domainAnalysis?.hasTriggeredContent && !domainAnalysis.isBlocked && (
+      {isRegulatedSector && !domainAnalysis?.isBlocked && (
         <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
           <p className="text-orange-800 text-center font-medium">
-            ⚠️ {domainAnalysis.contentCategory} domains require specialized outreach (+{Math.round((domainAnalysis.priceMultiplier - 1) * 100)}% premium pricing)
+            ⚠️ Regulated sectors require specialized outreach (+20% premium pricing)
           </p>
         </div>
       )}
